@@ -63,7 +63,7 @@ export default function Generator() {
   return (
     <>
       <main className='bg-[#161a21]'>
-        <div className="container px-6 md:px-20 xl:px-48 mx-auto md:pb-16 pb-0">
+        <div data-aos="fade-down" data-aos-duration="1000" data-aos-once="true" data-aos-delay="50" className="container px-6 md:px-20 xl:px-48 mx-auto md:pb-16 pb-0">
           <div className="block md:items-center md:justify-between">
             <div className="md:py-24 py-24 text-center">
               <h1 className="text-[3rem] text-white font-bold">Securepass</h1>
@@ -124,7 +124,6 @@ export default function Generator() {
       <footer className='bg-[#161a21]'>
         <div className="container px-6 lg:px-24 mx-auto font-custom tracking-wide font-medium">
           <div className="xl:flex xl:justify-between block text-center py-4">
-            <h4 className='text-lg text-shadow font-light'>Designed by <a href="https://freepik.com/" className="font-medium underline hover:text-gray-300 duration-150">Freepik</a></h4>
             <h4 className='text-lg text-shadow font-light'>&copy; Securepass 2022</h4>
             <h4 className='text-lg font-light'>Created by <a href="https://www.dortwess.com/" className="font-medium underline hover:text-gray-300 duration-150">Petr Dortwess</a></h4>
           </div>
