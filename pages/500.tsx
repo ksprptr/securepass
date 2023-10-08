@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Custom500() {
   return (
     <>
-      <div className="text-zinc-50 font-medium text-xl flex flex-col justify-center items-center">
+      <div className="text-zinc-50 font-medium text-xl flex flex-col justify-center items-center min-h-screen">
         <h3>500 | Internal server error</h3>
         <Link
           href="/"

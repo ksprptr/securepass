@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Custom404() {
   return (
     <>
-      <div className="text-zinc-50 font-medium text-xl flex flex-col justify-center items-center">
+      <div className="text-zinc-50 font-medium text-xl flex flex-col justify-center items-center min-h-screen">
         <h3>404 | Page not found</h3>
         <Link
           href="/"
