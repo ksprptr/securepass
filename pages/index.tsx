@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React, { useState } from "react";
+import types from "../data/types.json";
 
 type Form = {
   length: number;
@@ -10,6 +11,8 @@ type Form = {
 };
 
 export default function Generator() {
+  const [password, setPassword] = useState("Password will appear here");
+  const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
   const [form, setForm] = useState<Form>({
     length: 16,
     capital: true,
@@ -17,8 +20,6 @@ export default function Generator() {
     numbers: true,
     symbols: true,
   });
-
-  const [password, setPassword] = useState("Password will appear here");
 
   const updateForm = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({
@@ -31,23 +32,34 @@ export default function Generator() {
   const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const capital = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const lowercase = "abcdefghijklmnopqrstuvwxyz";
-    const numbers = "0123456789";
-    const symbols = "£$&()*+[]@#^-_!?";
+    form.capital && selectedTypes.push(types.capital);
+    form.lowercase && selectedTypes.push(types.lowercase);
+    form.numbers && selectedTypes.push(types.numbers);
+    form.symbols && selectedTypes.push(types.symbols);
 
-    let charset = "";
-    form.capital && (charset += capital);
-    form.lowercase && (charset += lowercase);
-    form.numbers && (charset += numbers);
-    form.symbols && (charset += symbols);
-
-    let password = "";
-    for (let i = 0; i < form.length; ++i) {
-      password += charset.charAt(Math.floor(Math.random() * charset.length));
+    let generatedPassword = "";
+    let prevType: number = 0;
+    let prevChar: string = "";
+    for (let i = 0; i < form.length; ) {
+      const currentIndex = Math.floor(Math.random() * selectedTypes.length);
+      if (selectedTypes.length !== 1) {
+        if (currentIndex === prevType) {
+          continue;
+        }
+      }
+      const type = selectedTypes[currentIndex]; // urcity typ (capital, lowercase, numbers, symbols)
+      const randomChar = type[Math.floor(Math.random() * type.length)];
+      if (randomChar === prevChar) {
+        continue;
+      }
+      prevChar = randomChar;
+      generatedPassword += randomChar;
+      prevType = currentIndex;
+      i++;
     }
 
-    setPassword(password);
+    setPassword(generatedPassword);
+    setSelectedTypes([]);
   };
 
   const [copy, setCopy] = useState(false);

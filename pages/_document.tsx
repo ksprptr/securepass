@@ -1,4 +1,3 @@
-import Footer from "@/layouts/Footer";
 import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
@@ -11,7 +10,6 @@ export default function Document() {
         <div className="bg-[#161a21] min-h-screen">
           <Main />
           <NextScript />
-          <Footer />
         </div>
       </body>
     </Html>
