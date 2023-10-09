@@ -84,10 +84,7 @@ export default function Generator() {
             Securepass
           </h1>
           <p className="mt-4 md:text-xl text-base text-zinc-400">
-            Password generator based on{" "}
-            <Link href="/algorithm" className="underline">
-              custom algorithm
-            </Link>
+            Password generator based on custom algorithm
           </p>
         </div>
         <form onSubmit={submitForm} className="mt-16">
