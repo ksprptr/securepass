@@ -4,10 +4,7 @@
 
 @layer components {
   ::-webkit-scrollbar {
-    @apply w-[0.3rem] bg-[#161a21];
-  }
-  ::-webkit-scrollbar-thumb {
-    @apply bg-[#3f71b7] rounded-lg;
+    @apply hidden;
   }
 
   input[type="range"]::-webkit-slider-thumb {
