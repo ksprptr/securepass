@@ -1,10 +1,14 @@
 import React from "react";
+import Head from "next/head";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
 export default function Generator() {
   return (
     <>
+      <Head>
+        <title>Securepass | Home</title>
+      </Head>
       <motion.main
         initial={{ opacity: 0, y: -100 }}
         animate={{ opacity: 1, y: 0 }}

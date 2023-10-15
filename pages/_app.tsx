@@ -14,7 +14,6 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Securepass</title>
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
       </Head>
       {!isErrorPath && <Header />}

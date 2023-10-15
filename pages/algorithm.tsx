@@ -1,10 +1,14 @@
 import React from "react";
+import Head from "next/head";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
 export default function Algorithm() {
   return (
     <>
+      <Head>
+        <title>Securepass | Algorithm</title>
+      </Head>
       <motion.div
         initial={{ opacity: 0, y: -100 }}
         animate={{ opacity: 1, y: 0 }}

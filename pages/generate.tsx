@@ -1,6 +1,7 @@
+import Head from "next/head";
 import types from "../data/types.json";
-import { motion } from "framer-motion";
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 type Form = {
   length: number;
@@ -72,6 +73,9 @@ export default function Generate() {
 
   return (
     <>
+      <Head>
+        <title>Securepass | Generate</title>
+      </Head>
       <motion.main
         initial={{ opacity: 0, y: -100 }}
         animate={{ opacity: 1, y: 0 }}

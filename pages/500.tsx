@@ -1,9 +1,13 @@
 import React from "react";
 import Link from "next/link";
+import Head from "next/head";
 
 export default function Custom500() {
   return (
     <>
+      <Head>
+        <title>Securepass | 505</title>
+      </Head>
       <div className="text-zinc-50 font-medium text-xl flex flex-col justify-center items-center min-h-screen">
         <h3>500 | Internal server error</h3>
         <Link
