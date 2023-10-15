@@ -33,6 +33,10 @@ export default function Generate() {
   const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    if (form.length > 64 || form.length < 4) {
+      setPassword("Unacceptable length!");
+    }
+
     form.capital && selectedTypes.push(types.capital);
     form.lowercase && selectedTypes.push(types.lowercase);
     form.numbers && selectedTypes.push(types.numbers);
