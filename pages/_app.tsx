@@ -1,14 +1,15 @@
-import "aos/dist/aos.css";
 import "../styles/styles.css";
 import Head from "next/head";
-import AOS from "aos";
-import { useEffect } from "react";
+import Header from "@/layouts/Header";
+import { useRouter } from "next/router";
 import type { AppProps } from "next/app";
+import { config } from "@fortawesome/fontawesome-svg-core";
+
+config.autoAddCss = false;
 
 export default function App({ Component, pageProps }: AppProps) {
-  useEffect(() => {
-    AOS.init();
-  }, []);
+  const Router = useRouter();
+  const isErrorPath = Router.pathname.startsWith("/404");
 
   return (
     <>
@@ -16,6 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <title>Securepass</title>
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
       </Head>
+      {!isErrorPath && <Header />}
       <Component {...pageProps} />
     </>
   );
