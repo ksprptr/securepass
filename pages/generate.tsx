@@ -88,7 +88,7 @@ export default function Generate() {
         className="max-w-screen-lg px-4 mx-auto text-zinc-50 py-20 min-h-screen flex flex-col items-center justify-center"
       >
         <div className="text-center">
-          <h1 className="text-5xl font-bold bg-clip-text text-transparent from-zinc-50 to-zinc-400 bg-gradient-to-r">
+          <h1 className="text-5xl font-bold bg-clip-text text-transparent from-zinc-50 to-zinc-400 bg-gradient-to-r lg:mt-0 mt-20">
             Generate
           </h1>
         </div>

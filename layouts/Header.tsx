@@ -8,12 +8,9 @@ export default function Header() {
 
   return (
     <>
-      <header className="bg-secondary fixed w-full">
+      <header className="bg-primary fixed w-full">
         <div className="max-w-screen-xl px-4 mx-auto flex justify-between items-center py-4 text-xl">
-          <Link
-            href="/"
-            className="font-bold bg-clip-text text-transparent from-zinc-50 to-zinc-400 bg-gradient-to-r"
-          >
+          <Link href="/" className="font-semibold bg-clip-text text-zinc-50">
             Securepass
           </Link>
           <ul className="gap-x-8 md:flex hidden">

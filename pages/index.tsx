@@ -22,12 +22,20 @@ export default function Generator() {
           <h2 className="text-zinc-100 text-lg">
             Password generator based on custom algorithm
           </h2>
-          <Link
-            href="/generate"
-            className="text-zinc-50 border-2 border-primary rounded-lg px-4 py-2 hover:bg-primary duration-150 font-medium disabled:opacity-50 disabled:hover:bg-transparent select-none inline-block mt-8"
-          >
-            Generate
-          </Link>
+          <div className="space-x-4">
+            <Link
+              href="/generate"
+              className="text-zinc-50 border-2 border-primary rounded-lg px-4 py-2 hover:bg-primary duration-150 font-medium disabled:opacity-50 disabled:hover:bg-transparent select-none inline-block mt-8"
+            >
+              Generate
+            </Link>
+            <Link
+              href="/algorithm"
+              className="text-zinc-50 border-2 border-primary rounded-lg px-4 py-2 hover:bg-primary duration-150 font-medium disabled:opacity-50 disabled:hover:bg-transparent select-none inline-block mt-8"
+            >
+              Algorithm
+            </Link>
+          </div>
         </div>
       </motion.main>
     </>
