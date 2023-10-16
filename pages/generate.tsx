@@ -35,6 +35,7 @@ export default function Generate() {
 
     if (form.length > 64 || form.length < 4) {
       setPassword("Unacceptable length!");
+      return;
     }
 
     form.capital && selectedTypes.push(types.capital);
