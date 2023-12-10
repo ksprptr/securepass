@@ -3,10 +3,16 @@
 @tailwind utilities;
 
 @layer components {
-  ::-webkit-scrollbar {
-    @apply hidden;
+  /* Buttons */
+  .btn {
+    @apply px-4 py-2 rounded-md text-white bg-blue-500 font-medium hover:bg-blue-600 duration-150 select-none;
   }
 
+  .nav-btn {
+    @apply hover:underline select-none;
+  }
+
+  /* Inputs */
   input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     background: #3f71b7;
@@ -20,5 +26,14 @@
     background: #3f71b7;
     transition: 0.2s;
     cursor: pointer;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-400 rounded-full;
   }
 }

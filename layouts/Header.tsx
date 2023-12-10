@@ -1,60 +1,69 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Header() {
   const [navbar, setNavbar] = useState<boolean>(false);
+  const [colorChange, setColorChange] = useState<boolean>(false);
+
+  const changeNavbarColor = () => {
+    if (window.scrollY >= 1) {
+      setColorChange(true);
+    } else {
+      setColorChange(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", changeNavbarColor);
+  }, []);
 
   return (
-    <>
-      <header className="bg-primary fixed w-full">
-        <div className="max-w-screen-xl px-4 mx-auto flex justify-between items-center py-4 text-xl">
-          <Link href="/" className="font-semibold bg-clip-text text-zinc-50">
-            Securepass
+    <nav className={`bg-zinc-50 z-10 fixed w-full text-zinc-800 ${colorChange && "shadow-xl"}`}>
+      <div className="max-w-screen-xl mx-auto px-4 py-6 text-xl flex items-center justify-between z-30">
+        <Link href="/" className="font-medium italic text-2xl hover:scale-110 duration-150 select-none">
+          Securepass
+        </Link>
+        <ul className="md:flex hidden gap-x-8">
+          <li>
+            <Link href="/" className="nav-btn">
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link href="/generate" className="nav-btn">
+              Generate
+            </Link>
+          </li>
+          <li>
+            <Link href="/save" className="nav-btn">
+              Save
+            </Link>
+          </li>
+        </ul>
+        <button onClick={() => setNavbar(!navbar)} className="md:hidden flex text-2xl">
+          <FontAwesomeIcon icon={navbar ? faXmark : faBars} />
+        </button>
+      </div>
+      <motion.ul initial={{ height: 0 }} animate={{ height: navbar ? "auto" : 0 }} transition={{ duration: 0.5 }} className="flex-col gap-y-2 text-right text-xl bg-zinc-50 overflow-hidden px-4">
+        <li>
+          <Link href="/" onClick={() => setNavbar(false)} className="nav-btn">
+            Home
           </Link>
-          <ul className="gap-x-8 md:flex hidden">
-            <li>
-              <Link href="/generate" className="text-zinc-50 hover:underline">
-                Generate
-              </Link>
-            </li>
-            <li>
-              <Link href="/algorithm" className="text-zinc-50 hover:underline">
-                Algorithm
-              </Link>
-            </li>
-          </ul>
-          <button
-            onClick={() => setNavbar(!navbar)}
-            className="md:hidden flex flex-col text-zinc-50 space-y-1"
-          >
-            <div className="h-[3px] bg-zinc-50 rounded-full w-6" />
-            <div className="h-[3px] bg-zinc-50 rounded-full w-6" />
-            <div className="h-[3px] bg-zinc-50 rounded-full w-6" />
-          </button>
-        </div>
-        <div className={`${navbar ? "block" : "hidden"} text-center`}>
-          <ul className="py-4 text-xl space-y-4">
-            <li>
-              <Link
-                href="/generate"
-                onClick={() => setNavbar(false)}
-                className="text-zinc-50"
-              >
-                Generate
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/algorithm"
-                onClick={() => setNavbar(false)}
-                className="text-zinc-50"
-              >
-                Algorithm
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </header>
-    </>
+        </li>
+        <li>
+          <Link href="/generate" onClick={() => setNavbar(false)} className="nav-btn">
+            Generate
+          </Link>
+        </li>
+        <li className="mb-4">
+          <Link href="/save" onClick={() => setNavbar(false)} className="nav-btn">
+            Save
+          </Link>
+        </li>
+      </motion.ul>
+    </nav>
   );
 }

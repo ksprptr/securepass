@@ -7,7 +7,7 @@ export default function Document() {
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
       </Head>
       <body>
-        <div className="bg-[#161a21] min-h-screen">
+        <div className="bg-zinc-50">
           <Main />
           <NextScript />
         </div>
