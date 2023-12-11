@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://securepass.kasparpetr.com
+
+# Sitemaps
+Sitemap: https://securepass.kasparpetr.com/sitemap.xml

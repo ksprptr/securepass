@@ -7,6 +7,24 @@
     @apply !scroll-smooth;
   }
 
+  /* Headings */
+  .heading-1 {
+    @apply md:text-8xl sm:text-6xl text-4xl font-semibold;
+  }
+
+  .heading-2 {
+    @apply md:text-5xl text-2xl font-medium;
+  }
+
+  .heading-3 {
+    @apply md:text-2xl text-lg;
+  }
+
+  /* Text */
+  .paragraph {
+    @apply md:text-2xl text-lg text-zinc-500 mt-4 md:w-2/3;
+  }
+
   /* Buttons */
   .btn-primary {
     @apply px-4 py-2 rounded-md text-white bg-blue-500 font-medium hover:bg-blue-600 duration-150 select-none disabled:opacity-50 disabled:hover:bg-blue-500;
@@ -20,11 +38,15 @@
     @apply px-4 py-2 rounded-md text-zinc-800 bg-gray-50 hover:bg-zinc-100 font-medium duration-150 select-none disabled:opacity-50 disabled:hover:bg-gray-50;
   }
 
+  .btn-danger {
+    @apply px-4 py-2 rounded-md text-white bg-red-500 font-medium hover:bg-red-600 duration-150 select-none disabled:opacity-50 disabled:hover:bg-red-500;
+  }
+
   .nav-btn {
     @apply hover:underline select-none;
   }
 
-  /* Input range */
+  /* Input Range */
   input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     background: #3b82f6;
@@ -36,6 +58,24 @@
 
   input[type="range"]::-webkit-slider-thumb:hover {
     cursor: pointer;
+  }
+
+  /* CheckBox Input */
+  .checkbox {
+    @apply flex gap-x-3 items-center bg-zinc-100 rounded-md px-4 py-3 mt-4 w-auto;
+  }
+
+  .checkbox input {
+    @apply w-5 h-5 text-blue-500 bg-zinc-200 rounded border-none focus:ring-0 focus:ring-offset-0 hover:cursor-pointer;
+  }
+
+  .checkbox label {
+    @apply font-medium select-none text-zinc-800 hover:cursor-pointer;
+  }
+
+  /* Range Input */
+  .range {
+    @apply bg-zinc-200 appearance-none md:w-[16rem] h-[0.5rem] rounded focus:outline-none focus:border-none;
   }
 
   /* Scrollbar */
