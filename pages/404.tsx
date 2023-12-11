@@ -1,13 +1,19 @@
 import Link from "next/link";
 import React from "react";
+import Image from "next/image";
 
 export default function Custom404() {
   return (
-    <main className="text-zinc-50 font-medium text-xl flex flex-col justify-center items-center min-h-screen">
-      <h3>404 | Page not found</h3>
-      <Link href="/" className="text-base text-zinc-50 border-2 border-[#3f71b7] rounded-lg px-4 py-2 hover:bg-[#3f71b7] duration-150 font-medium select-none mt-6">
-        Return to homepage
-      </Link>
-    </main>
+    <div className="bg-zinc-50">
+      <div className="px-4 flex h-screen justify-center items-center">
+        <div className="text-center font-medium text-lg text-zinc-800">
+          <Image src="/favicon.ico" alt="Logo" width={30} height={30} className="mx-auto" />
+          <h1 className="my-8">404 | Page not found</h1>
+          <Link href="/" className="btn-primary text-base">
+            Return to home
+          </Link>
+        </div>
+      </div>
+    </div>
   );
 }

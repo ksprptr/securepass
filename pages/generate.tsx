@@ -77,10 +77,12 @@ export default function Generate() {
   };
 
   return (
-    <motion.main initial={{ opacity: 0, y: -100 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="max-w-screen-xl md:h-screen md:py-0 py-48 flex flex-col justify-center px-4 mx-auto text-zinc-50">
-      <h1 className="md:text-6xl text-4xl font-medium text-zinc-800 md:text-left text-center">Generate</h1>
+    <main className="max-w-screen-xl md:h-screen md:py-0 py-48 flex flex-col justify-center px-4 mx-auto text-zinc-50">
+      <motion.h1 initial={{ opacity: 0, y: -100 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="md:text-6xl text-4xl font-medium text-zinc-800 md:text-left text-center">
+        Generate
+      </motion.h1>
       <div className="flex lg:flex-row flex-col justify-between mt-8 gap-x-16">
-        <form onSubmit={submitForm} className="md:text-lg">
+        <motion.form initial={{ opacity: 0, y: -100 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.25 }} onSubmit={submitForm} className="md:text-lg">
           <div className="flex md:flex-row flex-col items-center justify-between gap-4 bg-zinc-100 px-8 py-6 rounded-md">
             <label className="font-medium select-none text-zinc-800" htmlFor="length">
               Length: <span className="text-blue-500">{form.length}</span>
@@ -118,8 +120,8 @@ export default function Generate() {
               Generate
             </button>
           </div>
-        </form>
-        <div className="border-2 border-blue-500 rounded-lg p-4 w-11/12 flex flex-col md:mx-0 mx-auto justify-between lg:mt-0 mt-8">
+        </motion.form>
+        <motion.div initial={{ opacity: 0, y: -100 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.5 }} className="border-2 border-blue-500 rounded-lg p-4 w-11/12 flex flex-col md:mx-0 mx-auto justify-between lg:mt-0 mt-8">
           <p className={`break-all md:text-lg ${password === "Password will appear here" && "opacity-50"} font-medium md:mb-0 mb-4 text-zinc-800`}>{password}</p>
           <div className="flex md:flex-row flex-col gap-y-4 justify-between mt-4">
             <div className="flex md:flex-row flex-col gap-4">
@@ -148,8 +150,8 @@ export default function Generate() {
               Clear
             </button>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </motion.main>
+    </main>
   );
 }

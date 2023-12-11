@@ -21,7 +21,7 @@ export default function Header() {
   }, []);
 
   return (
-    <nav className={`bg-zinc-50 z-10 fixed w-full text-zinc-800 ${colorChange && "shadow-xl"}`}>
+    <nav className={`bg-zinc-100 z-10 fixed w-full text-zinc-800 ${colorChange && "shadow-xl"}`}>
       <div className="max-w-screen-xl mx-auto px-4 py-6 text-xl flex items-center justify-between z-30">
         <Link href="/" className="font-medium italic text-2xl hover:scale-105 duration-500 select-none">
           Securepass
@@ -47,7 +47,7 @@ export default function Header() {
           <FontAwesomeIcon icon={navbar ? faXmark : faBars} />
         </button>
       </div>
-      <motion.ul initial={{ height: 0 }} animate={{ height: navbar ? "auto" : 0 }} transition={{ duration: 0.5 }} className="flex-col gap-y-2 text-right text-xl bg-zinc-50 overflow-hidden px-4">
+      <motion.ul initial={{ height: 0 }} animate={{ height: navbar ? "auto" : 0 }} transition={{ duration: 0.5 }} className="flex-col gap-y-2 text-right text-xl bg-zinc-100 overflow-hidden px-4">
         <li>
           <Link href="/" onClick={() => setNavbar(false)} className="nav-btn">
             Home
