@@ -23,7 +23,7 @@ export default function Header() {
   return (
     <nav className={`bg-zinc-50 z-10 fixed w-full text-zinc-800 ${colorChange && "shadow-xl"}`}>
       <div className="max-w-screen-xl mx-auto px-4 py-6 text-xl flex items-center justify-between z-30">
-        <Link href="/" className="font-medium italic text-2xl hover:scale-110 duration-150 select-none">
+        <Link href="/" className="font-medium italic text-2xl hover:scale-105 duration-500 select-none">
           Securepass
         </Link>
         <ul className="md:flex hidden gap-x-8">
