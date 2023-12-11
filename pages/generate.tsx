@@ -71,6 +71,9 @@ export default function Generate() {
     if (nameOfPassword === "") {
       setError("Name cannot be empty.");
       return;
+    } else if (nameOfPassword.length > 32) {
+      setError("Name cannot be longer than 32 characters.");
+      return;
     } else if (savedPasswords.some((savedPassword) => savedPassword.name.toLowerCase() === nameOfPassword.toLowerCase())) {
       setError("Password with this name already exists.");
       return;
