@@ -12,7 +12,7 @@ export default function Generator() {
             <h1 className="heading-1 text-zinc-50 py-4">Securepass</h1>
             <h3 className="heading-3 italic text-zinc-100 md:mt-4">Adjustable password generator</h3>
             <button onClick={() => document.getElementById("how-does-it-works")?.scrollIntoView()} className="btn mt-4 rounded-full">
-              More...
+              Learn More
             </button>
           </motion.div>
           <motion.div initial={{ opacity: 0, y: -100 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.25 }}>
@@ -43,10 +43,10 @@ export default function Generator() {
       </motion.section>
       <motion.section id="save" initial={{ opacity: 0, y: -100 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 1 }} className="md:py-32 py-16 max-w-screen-xl mx-auto px-4">
         <h2 className="heading-2 text-zinc-800">Need to save password? No problem!</h2>
-        <p className="paragraph md:w-2/3">{"You can save as many passwords as you want."}</p>
+        <p className="paragraph md:w-2/3">{"You can save as many generated passwords as you want."}</p>
         <div className="mt-8">
           <Link href="/save" className="btn-primary md:text-xl text-lg">
-            Save password
+            Saved passwords
           </Link>
         </div>
       </motion.section>
