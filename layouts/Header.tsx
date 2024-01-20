@@ -1,12 +1,16 @@
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useOnClickOutside } from "@/utils/hooks/useOnClickOutside";
 
 export default function Header() {
+  const navRef = useRef<HTMLDivElement | null>(null);
   const [navbar, setNavbar] = useState<boolean>(false);
   const [colorChange, setColorChange] = useState<boolean>(false);
+
+  useOnClickOutside(navRef, () => setNavbar(false));
 
   const changeNavbarColor = () => {
     if (window.scrollY >= 1) {
@@ -43,9 +47,9 @@ export default function Header() {
             </Link>
           </li>
         </ul>
-        <button onClick={() => setNavbar(!navbar)} className="md:hidden flex text-2xl">
-          <FontAwesomeIcon icon={navbar ? faXmark : faBars} />
-        </button>
+        <div ref={navRef} className="md:hidden flex text-2xl">
+          <FontAwesomeIcon icon={navbar ? faXmark : faBars} onClick={() => setNavbar(!navbar)} />
+        </div>
       </div>
       <motion.ul initial={{ height: 0 }} animate={{ height: navbar ? "auto" : 0 }} transition={{ duration: 0.5 }} className="flex-col gap-y-2 text-right text-xl bg-zinc-100 overflow-hidden px-4">
         <li>
