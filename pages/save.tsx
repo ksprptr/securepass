@@ -1,31 +1,41 @@
 import React from "react";
-import Password from "@/components/Password";
+import Layout from "@/components/layouts/Layout";
+import Heading from "@/components/common/Heading";
+import Paragraph from "@/components/common/Paragraph";
+import SavedPassword from "@/components/SavedPassword";
 import { motion } from "framer-motion";
 import { useSavedPasswords } from "@/context/SavedPasswords";
 
+/**
+ * Component representing the saved passwords page
+ */
 export default function Save() {
   const { savedPasswords } = useSavedPasswords();
 
   return (
-    <main className={`max-w-screen-xl ${savedPasswords.length === 0 ? "h-screen" : "md:h-screen  md:py-0 py-48"} flex flex-col justify-center px-4 mx-auto text-zinc-50`}>
-      <motion.h1 initial={{ opacity: 0, y: -100 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="md:text-6xl text-4xl font-medium text-zinc-800 md:text-left text-center">
-        Saved passwords
-      </motion.h1>
-      <div className="flex md:flex-row flex-col mt-8 gap-8 flex-wrap">
-        {savedPasswords.length > 0 ? (
-          <>
-            {savedPasswords.map((password, i) => (
-              <motion.div initial={{ opacity: 0, y: -100 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: (i + 1) * 0.25 }} key={i}>
-                <Password name={password.name} password={password.password} />
-              </motion.div>
-            ))}
-          </>
-        ) : (
-          <motion.p initial={{ opacity: 0, y: -100 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.25 }} className="text-zinc-800 md:text-xl text-lg md:text-left text-center">
-            No saved passwords.
-          </motion.p>
-        )}
+    <Layout>
+      <div className={`${savedPasswords.length === 0 ? "h-screen" : "md:h-screen  md:py-0 py-48"} flex flex-col justify-center`}>
+        <motion.div initial={{ opacity: 0, y: -100 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+          <Heading size="2" className="md:text-left text-center">
+            Saved passwords
+          </Heading>
+        </motion.div>
+        <div className="flex md:flex-row flex-col gap-8 flex-wrap mt-8">
+          {savedPasswords.length > 0 ? (
+            <>
+              {savedPasswords.map((password, i) => (
+                <motion.div key={i} initial={{ opacity: 0, y: -100 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: (i + 1) * 0.25 }}>
+                  <SavedPassword name={password.name} password={password.password} />
+                </motion.div>
+              ))}
+            </>
+          ) : (
+            <motion.div initial={{ opacity: 0, y: -100 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.25 }}>
+              <Paragraph className="md:text-left text-center !mt-0">{"We couldn't find any saved passwords. Generate a password and save it to view it here."}</Paragraph>
+            </motion.div>
+          )}
+        </div>
       </div>
-    </main>
+    </Layout>
   );
 }

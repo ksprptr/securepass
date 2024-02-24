@@ -1,6 +1,7 @@
-import { Password } from "../data/types";
+import { Password } from "@/utils/types/global-types";
 import { createContext, useContext, useMemo, useCallback, useState, useEffect, ReactNode } from "react";
 
+// Saved passwords context
 const SavedPasswordsContext = createContext({
   savedPasswords: [] as Password[],
   addSavedPassword: (password: Password) => {},
@@ -8,9 +9,13 @@ const SavedPasswordsContext = createContext({
   clearSavedPasswords: () => {},
 });
 
+/**
+ * Provider for saved passwords
+ */
 export const SavedPasswordsProvider = ({ children }: { children: ReactNode }) => {
   const [savedPasswords, setSavedPasswords] = useState<Password[]>([]);
 
+  // Add password to local storage
   const addSavedPassword = useCallback(
     (password: Password) => {
       localStorage.setItem("savedPasswords", JSON.stringify([...savedPasswords, password]));
@@ -19,6 +24,7 @@ export const SavedPasswordsProvider = ({ children }: { children: ReactNode }) =>
     [savedPasswords]
   );
 
+  // Load saved passwords from local storage
   const loadSavedPasswords = useCallback(() => {
     const savedPasswords = localStorage.getItem("savedPasswords");
     if (savedPasswords) {
@@ -26,6 +32,7 @@ export const SavedPasswordsProvider = ({ children }: { children: ReactNode }) =>
     }
   }, []);
 
+  // Remove password from local storage
   const removeSavedPassword = useCallback(
     (password: Password) => {
       localStorage.setItem("savedPasswords", JSON.stringify(savedPasswords.filter((savedPassword) => savedPassword.name !== password.name)));
@@ -34,6 +41,7 @@ export const SavedPasswordsProvider = ({ children }: { children: ReactNode }) =>
     [savedPasswords]
   );
 
+  // Clear all saved passwords from local storage
   const clearSavedPasswords = useCallback(() => {
     localStorage.removeItem("savedPasswords");
     setSavedPasswords([]);

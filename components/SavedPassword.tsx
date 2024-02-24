@@ -1,15 +1,21 @@
+import Button from "./common/Button";
 import React, { useState } from "react";
 import { useSavedPasswords } from "@/context/SavedPasswords";
 
-type Props = {
+// Props interface
+interface Props {
   name: string;
   password: string;
-};
+}
 
-export default function Password({ name, password }: Readonly<Props>) {
+/**
+ * Component representing saved password
+ */
+export default function SavedPassword({ name, password }: Readonly<Props>) {
   const { removeSavedPassword } = useSavedPasswords();
   const [copied, setCopied] = useState<boolean>(false);
 
+  // Copy password to clipboard with a changing text
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
     setCopied(true);
@@ -19,18 +25,18 @@ export default function Password({ name, password }: Readonly<Props>) {
   };
 
   return (
-    <div className="flex sm:flex-row flex-col justify-between sm:items-center items-start text-zinc-800 bg-zinc-100 p-4 rounded-md gap-x-10">
+    <div className="flex sm:flex-row flex-col justify-between sm:items-center items-start bg-zinc-100 p-4 rounded-md gap-x-10">
       <div>
         <h1 className="font-medium text-xl break-all">{name}</h1>
         <p className="mt-1 break-all">{password}</p>
       </div>
       <div className="flex gap-4 sm:mt-0 mt-4">
-        <button onClick={() => copyToClipboard(password)} className="btn-primary">
+        <Button variant="primary" onClick={() => copyToClipboard(password)}>
           {copied ? "Copied" : "Copy"}
-        </button>
-        <button onClick={() => removeSavedPassword({ name, password })} className="btn-danger">
+        </Button>
+        <Button variant="danger" onClick={() => removeSavedPassword({ name, password })}>
           Delete
-        </button>
+        </Button>
       </div>
     </div>
   );
