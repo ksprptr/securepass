@@ -7,7 +7,7 @@ import Layout from "./Layout";
  */
 export default function Footer() {
   return (
-    <footer className="bg-zinc-100">
+    <footer className="bg-zinc-100 text-zinc-800">
       <Layout>
         <div className="flex md:flex-row flex-col md:justify-between justify-center md:text-xl text-lg py-6 text-center">
           <span>&copy; Securepass {new Date().getFullYear()}</span>

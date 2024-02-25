@@ -1,10 +1,10 @@
-import Link from "next/link";
 import Image from "next/image";
 import React from "react";
 import Button from "@/components/common/Button";
 import Layout from "@/components/layouts/Layout";
 import Heading from "@/components/common/Heading";
 import Paragraph from "@/components/common/Paragraph";
+import LinkButton from "@/components/common/LinkButton";
 import StrongSecure from "@/public/assets/image.png";
 import { motion } from "framer-motion";
 
@@ -54,18 +54,18 @@ export default function Home() {
             Want to generate password?
           </Heading>
           <Paragraph className="md:w-2/3 ml-auto">{"Generate a password by clicking the button below. It'll redirect you to the page where you can choose the parameters of the password."}</Paragraph>
-          <Button variant="primary" className="mt-8 text-lg">
-            <Link href="/generate">Generate</Link>
-          </Button>
+          <LinkButton href="/generate" variant="primary" className="mt-8 text-lg">
+            Generate
+          </LinkButton>
         </motion.section>
         <motion.section id="save" initial={{ opacity: 0, y: -100 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 1 }} className="md:py-32 py-16 pb-32">
           <Heading size="2" className="text-zinc-800">
             Need to save password? No problem!
           </Heading>
           <Paragraph className="md:w-2/3">{"You can save as many generated passwords as you want."}</Paragraph>
-          <Button variant="primary" className="mt-8 text-lg">
-            <Link href="/save">Saved passwords</Link>
-          </Button>
+          <LinkButton href="/save" variant="primary" className="mt-8 text-lg">
+            Saved passwords
+          </LinkButton>
         </motion.section>
       </Layout>
     </>

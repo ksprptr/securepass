@@ -16,7 +16,7 @@ export default function Save() {
     <Layout>
       <div className={`${savedPasswords.length === 0 ? "h-screen" : "md:h-screen  md:py-0 py-48"} flex flex-col justify-center`}>
         <motion.div initial={{ opacity: 0, y: -100 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-          <Heading size="2" className="md:text-left text-center">
+          <Heading size="2" className="md:text-left text-center text-zinc-800">
             Saved passwords
           </Heading>
         </motion.div>

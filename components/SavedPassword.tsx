@@ -25,7 +25,7 @@ export default function SavedPassword({ name, password }: Readonly<Props>) {
   };
 
   return (
-    <div className="flex sm:flex-row flex-col justify-between sm:items-center items-start bg-zinc-100 p-4 rounded-md gap-x-10">
+    <div className="flex sm:flex-row flex-col justify-between sm:items-center items-start bg-zinc-100 p-4 rounded-md gap-x-10 text-zinc-800">
       <div>
         <h1 className="font-medium text-xl break-all">{name}</h1>
         <p className="mt-1 break-all">{password}</p>

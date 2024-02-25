@@ -32,7 +32,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className={`bg-zinc-100 z-10 fixed w-full ${colorChange && "shadow-xl"}`}>
+    <header className={`bg-zinc-100 text-zinc-800 z-10 fixed w-full ${colorChange && "shadow-xl"}`}>
       <Layout>
         <div ref={navRef}>
           <div className="py-6 text-xl flex items-center justify-between z-30">
