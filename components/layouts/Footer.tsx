@@ -3,7 +3,7 @@ import React from "react";
 import Layout from "./Layout";
 
 /**
- * Component representing footer
+ * Component representing a footer
  */
 export default function Footer() {
   return (

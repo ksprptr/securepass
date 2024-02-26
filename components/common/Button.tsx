@@ -1,5 +1,5 @@
 import React from "react";
-import { getVariant } from "@/utils/functions/button-variants";
+import { getVariant } from "@/utils/functions/button-functions";
 import { ExtendedProps } from "@/utils/types/global-types";
 
 // Props interface

@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { useSavedPasswords } from "@/context/SavedPasswords";
 
 /**
- * Component representing the saved passwords page
+ * Component representing a saved passwords page
  */
 export default function Save() {
   const { savedPasswords } = useSavedPasswords();

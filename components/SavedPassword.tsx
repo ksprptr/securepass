@@ -9,7 +9,7 @@ interface Props {
 }
 
 /**
- * Component representing saved password
+ * Component representing a saved password
  */
 export default function SavedPassword({ name, password }: Readonly<Props>) {
   const { removeSavedPassword } = useSavedPasswords();

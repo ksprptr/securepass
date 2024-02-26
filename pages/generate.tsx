@@ -17,7 +17,7 @@ interface Form {
 }
 
 /**
- * Component representing the generate password page
+ * Component representing a generate password page
  */
 export default function Generate() {
   const { savedPasswords, addSavedPassword } = useSavedPasswords();

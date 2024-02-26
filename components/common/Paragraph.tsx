@@ -2,7 +2,7 @@ import React from "react";
 import { ExtendedProps } from "@/utils/types/global-types";
 
 /**
- * Component representing paragraph
+ * Component representing a paragraph
  */
 export default function Paragraph({ className, style, children }: ExtendedProps) {
   return (

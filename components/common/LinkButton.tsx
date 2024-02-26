@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { getVariant } from "@/utils/functions/button-variants";
+import { getVariant } from "@/utils/functions/button-functions";
 import { ExtendedProps } from "@/utils/types/global-types";
 
 // Props interface
@@ -13,7 +13,7 @@ interface Props extends ExtendedProps {
 }
 
 /**
- * Component representing button
+ * Component representing a link button
  */
 export default function LinkButton({ variant = "normal", styleType = "solid", rounded = false, href, target = "_self", className, style, children }: Props) {
   return (

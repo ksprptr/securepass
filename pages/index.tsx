@@ -9,7 +9,7 @@ import StrongSecure from "@/public/assets/image.png";
 import { motion } from "framer-motion";
 
 /**
- * Component representing home page
+ * Component representing a home page
  */
 export default function Home() {
   return (

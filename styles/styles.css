@@ -11,7 +11,7 @@
   }
 
   /*
-    Inputs
+    Input styles
   */
   input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
@@ -42,7 +42,9 @@
     @apply bg-zinc-200 appearance-none md:w-[16rem] h-[0.5rem] rounded focus:outline-none focus:border-none;
   }
 
-  /* Scrollbar */
+  /* 
+    Scrollbar styles
+  */
   ::-webkit-scrollbar {
     @apply w-2;
   }

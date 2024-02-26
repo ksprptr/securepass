@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useOnClickOutside } from "@/utils/hooks/useOnClickOutside";
 
 /**
- * Component representing header
+ * Component representing a header
  */
 export default function Header() {
   const navRef = useRef<HTMLDivElement | null>(null);

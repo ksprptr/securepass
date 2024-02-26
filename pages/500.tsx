@@ -6,7 +6,7 @@ import LinkButton from "@/components/common/LinkButton";
 import CenterLayout from "@/components/layouts/CenterLayout";
 
 /**
- * Component representing custom 500 page
+ * Component representing a custom 500 page
  */
 export default function Custom500() {
   return (

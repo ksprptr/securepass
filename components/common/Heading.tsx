@@ -7,7 +7,7 @@ interface Props extends ExtendedProps {
 }
 
 /**
- * Component representing heading
+ * Component representing a heading
  */
 export default function Heading({ size, children, className, style }: Props) {
   // Get heading styles based on size prop
