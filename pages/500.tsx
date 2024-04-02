@@ -1,4 +1,4 @@
-import Logo from "@/public/favicon.ico";
+import Logo from "@/public/assets/logo.png";
 import React from "react";
 import Image from "next/image";
 import Heading from "@/components/common/Heading";

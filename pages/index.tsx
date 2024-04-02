@@ -5,7 +5,7 @@ import Layout from "@/components/layouts/Layout";
 import Heading from "@/components/common/Heading";
 import Paragraph from "@/components/common/Paragraph";
 import LinkButton from "@/components/common/LinkButton";
-import StrongSecure from "@/public/assets/image.png";
+import StrongSecure from "@/public/assets/strong_secure.png";
 import { motion } from "framer-motion";
 
 /**
