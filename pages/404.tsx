@@ -1,4 +1,4 @@
-import Logo from "@/public/assets/logo.png";
+import Logo from "@/public/assets/logo.svg";
 import React from "react";
 import Image from "next/image";
 import Heading from "@/components/common/Heading";
