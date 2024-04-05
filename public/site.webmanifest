@@ -3,7 +3,7 @@
   "short_name": "Securepass",
   "description": "Securepass is a password generator that allows you to create and save passwords that are hard to crack.",
   "start_url": "/",
-  "display": "standalone",
+  "display": "browser",
   "background_color": "#f4f4f5",
   "theme_color": "#f4f4f5",
   "icons": [
