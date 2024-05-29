@@ -10,7 +10,7 @@ Password generator that allows you to create and save passwords that are hard to
 
 ## Installation
 
-Go to project folder
+Go to the project folder
 
 ```bash
 cd securepass/
