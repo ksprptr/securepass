@@ -1,7 +1,7 @@
-import Popup from "@/components/common/Popup";
 import Button from "@/components/common/Button";
 import Heading from "@/components/common/Heading";
 import Paragraph from "@/components/common/Paragraph";
+import ModalWindow from "@/components/common/ModalWindow";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useSavedPasswords } from "@/context/SavedPasswords";
@@ -22,10 +22,10 @@ interface Form {
 export default function Generate() {
   const { savedPasswords, addSavedPassword } = useSavedPasswords();
   const disabledPasswordTypes: string[] = ["Password will appear here.", "Unacceptable length."];
-  const [popup, setPopup] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState<boolean>(false);
   const [password, setPassword] = useState<string>("Password will appear here.");
+  const [modalWindow, setModalWindow] = useState<boolean>(false);
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
   const [nameOfPassword, setNameOfPassword] = useState<string>("");
   const [form, setForm] = useState<Form>({
@@ -98,7 +98,7 @@ export default function Generate() {
     addSavedPassword({ name: nameOfPassword, password: password });
     setNameOfPassword("");
     setError(null);
-    setPopup(false);
+    setModalWindow(false);
   };
 
   // Update form values
@@ -120,9 +120,9 @@ export default function Generate() {
 
   return (
     <>
-      {popup && (
-        <Popup>
-          <div className="bg-zinc-50 rounded-lg p-8 md:w-1/4 w-full flex flex-col md:mx-0 mx-8 justify-between lg:mt-0 mt-8">
+      {modalWindow && (
+        <ModalWindow>
+          <div className="bg-zinc-50 rounded-lg p-8 xl:w-1/4 md:w-1/2 w-8/12 flex flex-col md:mx-0 mx-8 justify-between lg:mt-0 mt-8">
             <Heading size="3" className="font-medium text-zinc-800">
               Save password
             </Heading>
@@ -136,13 +136,13 @@ export default function Generate() {
                 <Button type="submit" variant="primary">
                   Save
                 </Button>
-                <Button type="button" variant="danger" onClick={() => setPopup(false)}>
+                <Button type="button" variant="danger" onClick={() => setModalWindow(false)}>
                   Cancel
                 </Button>
               </div>
             </form>
           </div>
-        </Popup>
+        </ModalWindow>
       )}
       <div className="max-w-screen-xl px-4 mx-auto md:h-screen md:py-0 py-48 flex flex-col justify-center text-zinc-50">
         <motion.div initial={{ opacity: 0, y: -100 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
@@ -189,7 +189,7 @@ export default function Generate() {
                 <Button variant="primary" onClick={() => copyToClipboard(password)} disabled={disabledPasswordTypes.includes(password)}>
                   {copied ? "Copied" : "Copy"}
                 </Button>
-                <Button variant="primary" styleType="outline" onClick={() => setPopup(true)} disabled={disabledPasswordTypes.includes(password)}>
+                <Button variant="primary" styleType="outline" onClick={() => setModalWindow(true)} disabled={disabledPasswordTypes.includes(password)}>
                   Save
                 </Button>
               </div>
