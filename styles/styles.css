@@ -46,10 +46,10 @@
     Scrollbar styles
   */
   ::-webkit-scrollbar {
-    @apply w-2;
+    @apply w-1;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-blue-500 rounded-md;
+    @apply bg-blue-600 rounded-full;
   }
 }
