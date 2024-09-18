@@ -13,7 +13,7 @@ export default function Footer() {
           <span>&copy; Securepass {new Date().getFullYear()}</span>
           <span>
             Created by{" "}
-            <Link href="https://kasparpetr.com" target="_blank" className="text-blue-600 hover:underline select-none">
+            <Link href="https://ksprptr.dev" target="_blank" className="text-blue-600 hover:underline select-none">
               Petr Kaspar
             </Link>
           </span>
