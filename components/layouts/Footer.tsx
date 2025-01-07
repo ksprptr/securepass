@@ -20,11 +20,12 @@ export default function Footer() {
             </Link>
           </span>
           <span>
-            Designed by:{' '}
+            Design by:{' '}
             <Link
-              href='https://www.vecteezy.com/free-vector/central-europe-map'
-              className='select-none'>
-              Central Europe Map Vectors by Vecteezy
+              href='https://vecteezy.com/'
+              target='_blank'
+              className='text-orange-500 hover:underline select-none'>
+              Vecteezy.com
             </Link>
           </span>
         </div>

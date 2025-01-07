@@ -56,7 +56,7 @@ export default function HomePage() {
         <MotionDiv
           delay={0.2}
           id='how-does-it-work'
-          className='pt-16 flex lg:flex-row flex-col items-center justify-between gap-x-8'>
+          className='pt-16 flex lg:flex-row flex-col items-center justify-between gap-x-20'>
           <div>
             <Heading size='2' className='text-zinc-800 font-medium'>
               How does it work?
@@ -72,7 +72,7 @@ export default function HomePage() {
           </div>
           <Image
             src='/assets/how_does_it_work.jpg'
-            width={600}
+            width={400}
             height={500}
             alt='How does it work image'
             className='select-none xl:mt-0 mt-16'
@@ -85,9 +85,12 @@ export default function HomePage() {
           className='pt-32 flex lg:flex-row flex-col-reverse items-center justify-between gap-x-8 xl:text-right'>
           <Image
             src='/assets/generate_password.jpg'
-            width={600}
-            height={500}
+            width={500}
+            height={200}
             alt='Generate password image'
+            style={{
+              clipPath: 'inset(10px)',
+            }}
             className='select-none xl:mt-0 mt-16'
           />
           <div>
@@ -120,12 +123,9 @@ export default function HomePage() {
           </div>
           <Image
             src='/assets/save_password.jpg'
-            width={600}
+            width={500}
             height={500}
             alt='Save password image'
-            style={{
-              clipPath: 'inset(10px)',
-            }}
             className='select-none xl:mt-0 mt-16'
           />
         </MotionDiv>
