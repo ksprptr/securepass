@@ -1,20 +1,30 @@
-import Link from "next/link";
-import React from "react";
-import Layout from "./Layout";
+import Link from 'next/link';
+import Layout from '@/components/layouts/Layout';
 
 /**
  * Component representing a footer
  */
 export default function Footer() {
   return (
-    <footer className="bg-zinc-100 text-zinc-800">
+    <footer className='bg-zinc-100 text-zinc-800'>
       <Layout>
-        <div className="flex md:flex-row flex-col md:justify-between justify-center md:text-xl text-lg py-6 text-center">
+        <div className='flex flex-col justify-center py-6 text-center'>
           <span>&copy; Securepass {new Date().getFullYear()}</span>
           <span>
-            Created by{" "}
-            <Link href="https://ksprptr.dev" target="_blank" className="text-blue-600 hover:underline select-none">
-              Petr Kaspar
+            Created by{' '}
+            <Link
+              href='https://ksprptr.dev'
+              target='_blank'
+              className='text-blue-600 hover:underline select-none'>
+              Petr Kašpar
+            </Link>
+          </span>
+          <span>
+            Designed by:{' '}
+            <Link
+              href='https://www.vecteezy.com/free-vector/central-europe-map'
+              className='select-none'>
+              Central Europe Map Vectors by Vecteezy
             </Link>
           </span>
         </div>

@@ -1,59 +1,76 @@
-import { Password } from "@/utils/types/global-types";
-import { createContext, useContext, useMemo, useCallback, useState, useEffect, ReactNode } from "react";
+import { SavedPassword } from '@/utils/types/global-types';
+import { SavedPasswordsContext as SavedPasswordsContextType } from '@/utils/types/context-types';
+import { useState, useEffect, useContext, createContext, PropsWithChildren } from 'react';
 
-// Saved passwords context
-const SavedPasswordsContext = createContext({
-  savedPasswords: [] as Password[],
-  addSavedPassword: (password: Password) => {},
-  removeSavedPassword: (password: Password) => {},
+// Create context
+const SavedPasswordsContext = createContext<SavedPasswordsContextType>({
+  savedPasswords: [],
+  addSavedPassword: (_password: SavedPassword) => {},
+  removeSavedPassword: (_password: SavedPassword) => {},
   clearSavedPasswords: () => {},
 });
 
 /**
- * Provider for saved passwords
+ * Component representing the saved passwords provider
  */
-export const SavedPasswordsProvider = ({ children }: { children: ReactNode }) => {
-  const [savedPasswords, setSavedPasswords] = useState<Password[]>([]);
+export const SavedPasswordsProvider = ({ children }: PropsWithChildren) => {
+  const [savedPasswords, setSavedPasswords] = useState<SavedPassword[]>([]);
 
-  // Add password to local storage
-  const addSavedPassword = useCallback(
-    (password: Password) => {
-      localStorage.setItem("savedPasswords", JSON.stringify([...savedPasswords, password]));
-      setSavedPasswords((savedPasswords) => [...savedPasswords, password]);
-    },
-    [savedPasswords]
-  );
+  /**
+   * Add a saved password to local storage
+   */
+  const addSavedPassword = (password: SavedPassword) => {
+    localStorage.setItem('saved-passwords', JSON.stringify([...savedPasswords, password]));
+    setSavedPasswords((savedPasswords) => [...savedPasswords, password]);
+  };
 
-  // Load saved passwords from local storage
-  const loadSavedPasswords = useCallback(() => {
-    const savedPasswords = localStorage.getItem("savedPasswords");
-    if (savedPasswords) {
-      setSavedPasswords(JSON.parse(savedPasswords));
-    }
-  }, []);
+  /**
+   * Remove a saved password from local storage
+   */
+  const removeSavedPassword = (password: SavedPassword) => {
+    localStorage.setItem(
+      'saved-passwords',
+      JSON.stringify(savedPasswords.filter((savedPassword) => savedPassword.name !== password.name))
+    );
 
-  // Remove password from local storage
-  const removeSavedPassword = useCallback(
-    (password: Password) => {
-      localStorage.setItem("savedPasswords", JSON.stringify(savedPasswords.filter((savedPassword) => savedPassword.name !== password.name)));
-      setSavedPasswords((savedPasswords) => savedPasswords.filter((savedPassword) => savedPassword.name !== password.name));
-    },
-    [savedPasswords]
-  );
+    setSavedPasswords((prevSavedPasswords) =>
+      prevSavedPasswords.filter((prevSavedPasswords) => prevSavedPasswords.name !== password.name)
+    );
+  };
 
-  // Clear all saved passwords from local storage
-  const clearSavedPasswords = useCallback(() => {
-    localStorage.removeItem("savedPasswords");
+  /**
+   * Clear all saved passwords from local storage
+   */
+  const clearSavedPasswords = () => {
+    localStorage.removeItem('saved-passwords');
+
     setSavedPasswords([]);
+  };
+
+  /**
+   * Load saved passwords from local storage on component mount
+   */
+  useEffect(() => {
+    const loadSavedPasswords = () => {
+      const savedPasswords = localStorage.getItem('saved-passwords');
+
+      if (savedPasswords) setSavedPasswords(JSON.parse(savedPasswords));
+    };
+
+    loadSavedPasswords();
   }, []);
 
-  useEffect(() => {
-    loadSavedPasswords();
-  }, [loadSavedPasswords]);
-
-  const valueObject = useMemo(() => ({ savedPasswords, addSavedPassword, removeSavedPassword, clearSavedPasswords }), [savedPasswords, addSavedPassword, removeSavedPassword, clearSavedPasswords]);
-
-  return <SavedPasswordsContext.Provider value={valueObject}>{children}</SavedPasswordsContext.Provider>;
+  return (
+    <SavedPasswordsContext.Provider
+      value={{ savedPasswords, addSavedPassword, removeSavedPassword, clearSavedPasswords }}>
+      {children}
+    </SavedPasswordsContext.Provider>
+  );
 };
 
-export const useSavedPasswords = () => useContext(SavedPasswordsContext);
+/**
+ * Hook to use the saved passwords context
+ */
+export const useSavedPasswords = () => {
+  return useContext(SavedPasswordsContext);
+};

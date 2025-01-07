@@ -3,17 +3,11 @@
 @tailwind utilities;
 
 @layer components {
-  /* 
-    Page styles
-  */
   * {
     @apply !scroll-smooth;
   }
 
-  /*
-    Input styles
-  */
-  input[type="range"]::-webkit-slider-thumb {
+  input[type='range']::-webkit-slider-thumb {
     -webkit-appearance: none;
     background: #3b82f6;
     border-radius: 2px;
@@ -22,12 +16,12 @@
     transition: 0.2s;
   }
 
-  input[type="range"]::-webkit-slider-thumb:hover {
+  input[type='range']::-webkit-slider-thumb:hover {
     cursor: pointer;
   }
 
   .checkbox {
-    @apply flex gap-x-3 items-center bg-zinc-100 rounded-md px-4 py-3 mt-4 w-auto;
+    @apply flex gap-x-3 items-center bg-zinc-100 rounded-md px-4 py-3 mt-4 sm:min-w-0 min-w-full;
   }
 
   .checkbox input {
@@ -42,9 +36,6 @@
     @apply bg-zinc-200 appearance-none md:w-[16rem] h-[0.5rem] rounded focus:outline-none focus:border-none;
   }
 
-  /* 
-    Scrollbar styles
-  */
   ::-webkit-scrollbar {
     @apply w-1;
   }

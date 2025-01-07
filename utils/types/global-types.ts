@@ -4,14 +4,15 @@ export interface ExtendedProps {
   style?: React.CSSProperties;
 }
 
-export type Password = {
+export interface SavedPassword {
   name: string;
   password: string;
-};
+  date: string;
+}
 
 export const passwordGenerateTypes = {
-  "capital": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-  "lowercase": "abcdefghijklmnopqrstuvwxyz",
-  "numbers": "0123456789",
-  "symbols": "$&()*+[]@#^-_!?"
-}
+  capital: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+  lowercase: 'abcdefghijklmnopqrstuvwxyz',
+  numbers: '0123456789',
+  symbols: '$&()*+[]@#^-_!?',
+};

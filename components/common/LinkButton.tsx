@@ -1,26 +1,39 @@
-import Link from "next/link";
-import React from "react";
-import { getVariant } from "@/utils/functions/button-functions";
-import { ExtendedProps } from "@/utils/types/global-types";
+import Link from 'next/link';
+import Button, { ButtonProps } from '@/components/common/Button';
 
 // Props interface
-interface Props extends ExtendedProps {
-  variant?: "primary" | "danger" | "normal";
-  styleType?: "solid" | "outline";
-  rounded?: boolean;
+interface Props extends ButtonProps {
   href: string;
-  target?: "_blank" | "_self" | "_parent" | "_top";
+  target?: '_blank' | '_self' | '_parent' | '_top';
 }
 
 /**
  * Component representing a link button
  */
-export default function LinkButton({ variant = "normal", styleType = "solid", rounded = false, href, target = "_self", className, style, children }: Props) {
+export default function LinkButton({
+  type = 'button',
+  variant = 'normal',
+  styleType = 'solid',
+  rounded = false,
+  href,
+  target = '_self',
+  onClick,
+  className,
+  style,
+  children,
+}: Props) {
   return (
-    <div className="mt-8">
-      <Link href={href} target={target} className={`${getVariant(variant, styleType)} ${rounded ? "rounded-full" : "rounded-md"} px-4 py-2 font-medium duration-150 select-none disabled:opacity-50 ${className}`} style={style}>
+    <Link href={href} target={target}>
+      <Button
+        type={type}
+        variant={variant}
+        styleType={styleType}
+        rounded={rounded}
+        onClick={onClick}
+        className={className}
+        style={style}>
         {children}
-      </Link>
-    </div>
+      </Button>
+    </Link>
   );
 }
