@@ -116,7 +116,9 @@ export default function HomePage() {
             <Heading size='2' className='text-zinc-800 font-medium'>
               Need to save password? No problem!
             </Heading>
-            <Paragraph className='pt-4'>{'You can save up to 8 generated passwords.'}</Paragraph>
+            <Paragraph className='pt-4'>
+              {'You can save up to eight generated passwords.'}
+            </Paragraph>
             <LinkButton href='/save' variant='primary' className='mt-8'>
               Saved passwords
             </LinkButton>
