@@ -1,31 +1,45 @@
 # Securepass
 
-Password generator that allows you to create and save passwords that are hard to crack.
+> A password generator that lets you customize character types—digits, upper/lowercase letters, and symbols—with an option to save generated passwords.
 
-## Dependencies
+- [Prerequisites](#Prerequisites)
+- [Installation](#Installation)
+- [Run](#Run)
+- [Configuration](#Configuration)
+- [Deployment](#Deployment)
+- [License](#License)
 
-[Node.js](https://nodejs.org/en) version `18 or later..`
+## Prerequisites
 
-[pnpm](https://pnpm.io/installation) version `8 or later..`
+- Knowledge of JavaScript/TypeScript, [Next.js](https://nextjs.org/), Git
+- IDE ([VS Code](https://code.visualstudio.com/), WebStorm, ...)
+- Package manager ([pnpm](https://pnpm.io/installation), npm, ...)
 
 ## Installation
 
-Go to the project folder
+- Go to the project folder using `cd securepass/`
+- Install all dependecies using `pnpm install`
 
-```bash
-cd securepass/
-```
+## Run
 
-Install all dependencies
+- Development server: `pnpm run dev`
+- Production: `pnpm run build & pnpm run start`
 
-```bash
-pnpm install
-```
+## Configuration
 
-Start dev server
+| Description       | Values                 |
+| ----------------- | ---------------------- |
+| **Ports:**        | 3000                   |
+| **Technologies:** | Next.js                |
+| **URL:**          | http://localhost:3000/ |
 
-```bash
-pnpm run dev
-```
+## Deployment
 
-Open [localhost:3000](http://localhost:3000) in your browser to see the project home page.
+| Description | Values                          |
+| ----------- | ------------------------------- |
+| **URL:**    | https://securepass.ksprptr.dev/ |
+
+## License
+
+> This software is developed by **Petr Kašpar** and is licensed under the MIT License.  
+> For more details, please refer to the [LICENSE](./LICENSE) file.

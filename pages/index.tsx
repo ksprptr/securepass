@@ -21,7 +21,7 @@ export default function HomePage() {
                 Securepass
               </Heading>
               <Heading size='3' className='italic text-zinc-100 pt-8'>
-                Adjustable password generator
+                Customizable password generator
               </Heading>
               <Button
                 rounded

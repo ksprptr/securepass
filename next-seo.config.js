@@ -1,7 +1,7 @@
 module.exports = {
-  defaultTitle: 'Securepass | Adjustable Password Generator',
+  defaultTitle: 'Securepass',
   description:
-    'Securepass is a password generator that allows you to create and save passwords that are hard to crack.',
+    'A password generator that lets you customize character types—digits, upper/lowercase letters, and symbols—with an option to save generated passwords.',
   openGraph: {
     type: 'website',
     url: 'https://securepass.ksprptr.dev/',
