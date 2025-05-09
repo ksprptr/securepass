@@ -61,7 +61,7 @@ export default function Navbar() {
           <MotionDiv
             initialHeight={0}
             animateHeight={navbar ? 'auto' : 0}
-            duration={0.5}
+            duration={0.2}
             className='flex-col gap-y-2 text-right text-xl bg-zinc-100 overflow-hidden'>
             <ul>
               {navLinks.map((navLink, i) => (

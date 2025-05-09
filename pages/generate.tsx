@@ -150,7 +150,7 @@ export default function GeneratePage() {
                 type='text'
                 name='name'
                 id='name'
-                className='bg-transparent rounded-md px-2 py-2 border-2 border-blue-500 focus:outline-none focus:ring-0'
+                className='bg-transparent rounded-md px-2 py-2 border-2 border-blue-500 focus:outline-hidden focus:ring-0'
                 value={nameOfPassword}
                 onChange={(e) => setNameOfPassword(e.target.value)}
               />
@@ -170,7 +170,7 @@ export default function GeneratePage() {
 
       {/* Main content of the page */}
       <Layout>
-        <div className='min-h-screen flex flex-col justify-center md:pt-0 py-32'>
+        <div className='min-h-screen py-48'>
           <MotionDiv>
             <Heading size='2' className='text-zinc-800 sm:text-left text-center font-medium'>
               Generate
@@ -251,7 +251,7 @@ export default function GeneratePage() {
             {/* Generated password (right-side) */}
             <MotionDiv
               delay={0.7}
-              className='xl:my-0 my-12 border-2 border-blue-500 rounded-md p-4 flex flex-col justify-between sm:min-h-full'>
+              className='xl:mt-0 mt-12 border-2 border-blue-500 rounded-md p-4 flex flex-col justify-between sm:min-h-full'>
               <Paragraph
                 className={`break-all mb-4 text-zinc-800 ${
                   disabledPasswordTypes.includes(password) && 'opacity-50'

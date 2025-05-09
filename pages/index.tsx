@@ -12,7 +12,7 @@ import LinkButton from '@/components/common/LinkButton';
 export default function HomePage() {
   return (
     <>
-      <section className='bg-gradient-to-r from-blue-600 to-blue-500'>
+      <section className='bg-linear-to-r from-blue-600 to-blue-500'>
         {/* Home section */}
         <Layout>
           <div className='flex lg:flex-row flex-col items-center justify-between gap-x-8 md:pt-72 md:pb-0 pt-56 pb-24 md:text-left text-center'>
@@ -56,8 +56,8 @@ export default function HomePage() {
         <MotionDiv
           delay={0.2}
           id='how-does-it-work'
-          className='pt-16 flex lg:flex-row flex-col items-center justify-between gap-x-20'>
-          <div>
+          className='flex md:flex-row flex-col-reverse items-center justify-between gap-x-20'>
+          <div className='md:mt-0 mt-10'>
             <Heading size='2' className='text-zinc-800 font-medium'>
               How does it work?
             </Heading>
@@ -75,14 +75,14 @@ export default function HomePage() {
             width={400}
             height={500}
             alt='How does it work image'
-            className='select-none xl:mt-0 mt-16'
+            className='select-none md:w-96 md:h-96 w-80 h-80'
           />
         </MotionDiv>
 
         {/* Generate password */}
         <MotionDiv
           delay={0.3}
-          className='pt-32 flex lg:flex-row flex-col-reverse items-center justify-between gap-x-8 xl:text-right'>
+          className='flex md:flex-row flex-col items-center justify-between gap-x-8 xl:text-right lg:mt-0 mt-12'>
           <Image
             src='/assets/generate_password.jpg'
             width={500}
@@ -91,7 +91,7 @@ export default function HomePage() {
             style={{
               clipPath: 'inset(10px)',
             }}
-            className='select-none xl:mt-0 mt-16'
+            className='select-none md:w-96 md:h-96 w-80 h-80'
           />
           <div>
             <Heading size='2' className='text-zinc-800 font-medium'>
@@ -111,7 +111,7 @@ export default function HomePage() {
         {/* Save password */}
         <MotionDiv
           delay={0.4}
-          className='py-32 flex lg:flex-row flex-col lg:items-center justify-between gap-x-8'>
+          className='pb-32 flex md:flex-row flex-col-reverse items-center justify-between gap-x-8 lg:mt-0 mt-12'>
           <div>
             <Heading size='2' className='text-zinc-800 font-medium'>
               Need to save password? No problem!
@@ -128,7 +128,7 @@ export default function HomePage() {
             width={500}
             height={500}
             alt='Save password image'
-            className='select-none xl:mt-0 mt-16'
+            className='select-none md:w-96 w-80'
           />
         </MotionDiv>
       </Layout>

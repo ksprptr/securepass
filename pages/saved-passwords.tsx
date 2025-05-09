@@ -13,7 +13,7 @@ export default function SavedPasswordsPage() {
 
   return (
     <Layout>
-      <div className='min-h-screen flex flex-col justify-center md:pt-0 py-32'>
+      <div className='min-h-screen py-48'>
         <MotionDiv>
           <Heading size='2' className='md:text-left text-center text-zinc-800 font-medium'>
             Saved passwords

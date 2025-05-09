@@ -1,10 +1,53 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@plugin '@tailwindcss/forms';
+
+@theme {
+  --color-primary: #3b82f6;
+  --color-primary-hover: #2563eb;
+  --color-danger: #ef4444;
+  --color-danger-hover: #dc2626;
+
+  --breakpoint-xs: 320px;
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility checkbox {
+  @apply flex gap-x-3 items-center bg-zinc-100 rounded-md px-4 py-3 mt-4 sm:min-w-0 min-w-full;
+
+  & input {
+    @apply w-5 h-5 checked:bg-blue-500 bg-zinc-200 rounded-sm border-none focus:ring-0 focus:ring-offset-0 hover:cursor-pointer;
+  }
+
+  & label {
+    @apply font-medium select-none text-zinc-800 hover:cursor-pointer;
+  }
+}
+
+@utility range {
+  @apply bg-zinc-200 appearance-none md:w-[16rem] h-[0.5rem] rounded-sm focus:outline-hidden focus:border-none;
+}
 
 @layer components {
   * {
-    @apply !scroll-smooth;
+    @apply scroll-smooth!;
   }
 
   input[type='range']::-webkit-slider-thumb {
@@ -20,20 +63,8 @@
     cursor: pointer;
   }
 
-  .checkbox {
-    @apply flex gap-x-3 items-center bg-zinc-100 rounded-md px-4 py-3 mt-4 sm:min-w-0 min-w-full;
-  }
-
-  .checkbox input {
-    @apply w-5 h-5 text-blue-500 bg-zinc-200 rounded border-none focus:ring-0 focus:ring-offset-0 hover:cursor-pointer;
-  }
-
-  .checkbox label {
-    @apply font-medium select-none text-zinc-800 hover:cursor-pointer;
-  }
-
-  .range {
-    @apply bg-zinc-200 appearance-none md:w-[16rem] h-[0.5rem] rounded focus:outline-none focus:border-none;
+  button {
+    @apply hover:cursor-pointer;
   }
 
   ::-webkit-scrollbar {

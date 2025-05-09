@@ -15,7 +15,7 @@ export default function Heading({ size, children, className, style }: Props) {
       case '1':
         return 'md:text-8xl sm:text-6xl text-4xl';
       case '2':
-        return 'md:text-5xl text-3xl';
+        return 'lg:text-5xl md:text-4xl text-3xl';
       case '3':
         return 'md:text-2xl text-xl';
       default:
