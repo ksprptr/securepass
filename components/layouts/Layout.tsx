@@ -1,8 +1,0 @@
-import { PropsWithChildren } from 'react';
-
-/**
- * Component representing a layout
- */
-export default function Layout({ children }: PropsWithChildren) {
-  return <div className='max-w-(--breakpoint-xl) mx-auto px-8'>{children}</div>;
-}

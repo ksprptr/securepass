@@ -1,45 +1,36 @@
-# Securepass
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-> A password generator that lets you customize character types—digits, upper/lowercase letters, and symbols—with an option to save generated passwords.
+## Getting Started
 
-- [Prerequisites](#Prerequisites)
-- [Installation](#Installation)
-- [Run](#Run)
-- [Configuration](#Configuration)
-- [Deployment](#Deployment)
-- [License](#License)
+First, run the development server:
 
-## Prerequisites
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-- Knowledge of JavaScript/TypeScript, [Next.js](https://nextjs.org/), Git
-- IDE ([VS Code](https://code.visualstudio.com/), WebStorm, ...)
-- Package manager ([pnpm](https://pnpm.io/installation), npm, ...)
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Installation
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-- Go to the project folder using `cd securepass/`
-- Install all dependecies using `pnpm install`
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Run
+## Learn More
 
-- Development server: `pnpm run dev`
-- Production: `pnpm run build & pnpm run start`
+To learn more about Next.js, take a look at the following resources:
 
-## Configuration
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-| Description       | Values                 |
-| ----------------- | ---------------------- |
-| **Ports:**        | 3000                   |
-| **Technologies:** | Next.js                |
-| **URL:**          | http://localhost:3000/ |
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deployment
+## Deploy on Vercel
 
-| Description | Values                          |
-| ----------- | ------------------------------- |
-| **URL:**    | https://securepass.ksprptr.dev/ |
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-## License
-
-> This software is developed by **Petr Kašpar** and is licensed under the MIT License.  
-> For more details, please refer to the [LICENSE](./LICENSE) file.
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
