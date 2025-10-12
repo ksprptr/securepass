@@ -1,1 +1,52 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+/**
+ * Base styles
+ */
+@layer base {
+  * {
+    @apply scroll-smooth;
+  }
+
+  a,
+  svg,
+  img,
+  link,
+  input,
+  label,
+  select,
+  button,
+  textarea {
+    @apply select-none;
+  }
+
+  link,
+  button {
+    @apply hover:cursor-pointer disabled:opacity-50 disabled:hover:cursor-default;
+  }
+
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url(data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0Ljk1IDEwIj48ZGVmcz48c3R5bGU+LmNscy0ye2ZpbGw6IzQ0NDt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPmFycm93czwvdGl0bGU+PHBvbHlnb24gY2xhc3M9ImNscy0yIiBwb2ludHM9IjEuNDEgNC42NyAyLjQ4IDMuMTggMy41NCA0LjY3IDEuNDEgNC42NyIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtMiIgcG9pbnRzPSIzLjU0IDUuMzMgMi40OCA2LjgyIDEuNDEgNS4zMyAzLjU0IDUuMzMiLz48L3N2Zz4=)
+      no-repeat 93% 50%;
+  }
+
+  ::-webkit-scrollbar {
+    @apply h-1 w-1 bg-blue-900;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-zinc-900;
+  }
+}
+
+/**
+ * Components
+ */
+@layer components {
+  .liquid-glass-bg {
+    @apply bg-gradient-to-br from-zinc-500/5 to-zinc-500/3 backdrop-blur-3xl;
+  }
+}
