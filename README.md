@@ -1,6 +1,6 @@
-# Securepass
+# Vaultify
 
-> A password generator that lets you customize character types—digits, upper/lowercase letters, and symbols—with an option to save generated passwords.
+> Lightweight web-based utility for generating secure and unique UUIDs, passwords, MACs, and IPs.
 
 - [Prerequisites](#Prerequisites)
 - [Installation](#Installation)
@@ -13,12 +13,14 @@
 
 - Knowledge of JavaScript/TypeScript, [Next.js](https://nextjs.org/), Git
 - IDE ([VS Code](https://code.visualstudio.com/), WebStorm, ...)
-- Package manager ([pnpm](https://pnpm.io/installation), npm, ...)
+- Package manager ([pnpm (recommended)](https://pnpm.io/installation), npm, ...)
 
 ## Installation
 
-- Go to the project folder using `cd securepass/`
-- Install all dependecies using `pnpm install`
+1. Go to the project folder: `cd vaultify/`
+2. Install all dependecies: `pnpm install`
+3. Copy `.env.example` to `.env` and update the properties accordingly
+   - **Windows (CMD):** `copy .env.example .env`, **Linux/macOS:** `cp .env.example .env`
 
 ## Run
 
@@ -35,11 +37,12 @@
 
 ## Deployment
 
-| Description | Values                          |
-| ----------- | ------------------------------- |
-| **URL:**    | https://securepass.ksprptr.dev/ |
+| Description | Values                       |
+| ----------- | ---------------------------- |
+| **Server:** | Coolify                      |
+| **URL:**    | https://vaultify.ksprptr.dev |
 
 ## License
 
 > This software is developed by **Petr Kašpar** and is licensed under the MIT License.  
-> For more details, please refer to the [LICENSE](./LICENSE) file.
+> For more details, please refer to the LICENSE file.
