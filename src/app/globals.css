@@ -47,6 +47,6 @@
  */
 @layer components {
   .liquid-glass-bg {
-    @apply bg-gradient-to-br from-zinc-500/5 to-zinc-500/3 backdrop-blur-3xl;
+    @apply bg-linear-to-br from-zinc-500/5 to-zinc-500/3 backdrop-blur-3xl;
   }
 }

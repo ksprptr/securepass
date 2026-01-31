@@ -4,4 +4,3 @@
 .stylelintignore
 coverage
 node_modules
-public

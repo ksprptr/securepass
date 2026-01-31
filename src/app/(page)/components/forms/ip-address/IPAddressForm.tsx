@@ -7,7 +7,7 @@ import { IPAddressFormProps } from '@/app/(page)/types/form.types';
 import GenerateButton from '../../shared/GenerateButton';
 import ResultSection from '../../shared/ResultSection';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { SyntheticEvent, useState } from 'react';
 
 /**
  * Component representing an ip address generation form
@@ -17,7 +17,7 @@ export default function IPAddressForm() {
   const [form, setForm] = useState<IPAddressFormProps>({ version: IP_ADDRESS_VERSIONS.V4 });
 
   // Handle form submission
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
 
     const { version } = form;

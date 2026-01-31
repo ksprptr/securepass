@@ -21,7 +21,6 @@ export default function Icon({ icon, className, onClick, type = 'outlined', ...p
   const iconSet = type === 'outlined' ? iconsOutlined : iconsSolid;
   const globalClassName = `h-4 w-4 ${onClick ? 'cursor-pointer' : ''} ${className}`;
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const Component = iconSet[`${icon}Icon`];
 
