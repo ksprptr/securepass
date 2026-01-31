@@ -9,7 +9,7 @@ export default function Page() {
     <section className='flex min-h-screen flex-col items-center justify-center'>
       <h1 className='text-center'>
         <RoughNotation type='highlight' show={true} color='#2563eb' animationDuration={1200}>
-          <span className='w-max bg-gradient-to-r from-zinc-50 to-zinc-300 bg-clip-text text-6xl font-bold text-transparent sm:text-7xl'>
+          <span className='w-max bg-linear-to-r from-zinc-50 to-zinc-300 bg-clip-text text-6xl font-bold text-transparent sm:text-7xl'>
             Page Not Found
           </span>
         </RoughNotation>

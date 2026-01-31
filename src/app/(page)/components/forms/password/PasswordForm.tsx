@@ -8,7 +8,7 @@ import GenerateButton from '../../shared/GenerateButton';
 import ResultSection from '../../shared/ResultSection';
 import ToggleButton from './parts/ToggleButton';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { SyntheticEvent, useState } from 'react';
 
 /**
  * Component representing a password generation form
@@ -25,7 +25,7 @@ export default function PasswordForm() {
   });
 
   // Handle form submission
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
 
     const {
@@ -88,7 +88,7 @@ export default function PasswordForm() {
         initial={{ x: -50, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ type: 'spring' }}
-        className='w-full space-y-8 rounded-2xl bg-gradient-to-br from-zinc-500/5 to-zinc-500/3 p-8 backdrop-blur-3xl'>
+        className='w-full space-y-8 rounded-2xl bg-linear-to-br from-zinc-500/5 to-zinc-500/3 p-8 backdrop-blur-3xl'>
         <ToggleButton
           text='Uppercase'
           toggled={form.includeUppercase}

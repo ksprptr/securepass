@@ -22,7 +22,7 @@ export default function ToggleButton({ text, toggled, onToggle, disabled }: Prop
         disabled={disabled}
         className={`relative h-5 w-10 rounded-full transition-colors duration-300 ease-out ${toggled ? 'bg-blue-500' : 'bg-zinc-800'}`}>
         <span
-          className={`absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-gradient-to-r from-zinc-50 to-zinc-200 shadow-md transition-transform duration-300 ease-out ${
+          className={`absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-linear-to-r from-zinc-50 to-zinc-200 shadow-md transition-transform duration-300 ease-out ${
             toggled ? 'translate-x-5' : ''
           }`}></span>
       </button>

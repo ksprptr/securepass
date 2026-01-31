@@ -7,7 +7,7 @@ import { MacAddressFormProps } from '@/app/(page)/types/form.types';
 import GenerateButton from '../../shared/GenerateButton';
 import ResultSection from '../../shared/ResultSection';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { SyntheticEvent, useState } from 'react';
 
 /**
  * Component representing a mac address generation form
@@ -17,7 +17,7 @@ export default function MacAddressForm() {
   const [form, setForm] = useState<MacAddressFormProps>({ version: MAC_ADRESS_VERSIONS.STANDARD });
 
   // Handle form submission
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
 
     const { version } = form;

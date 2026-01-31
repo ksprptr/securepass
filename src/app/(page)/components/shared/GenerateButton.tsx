@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion';
+import { SyntheticEvent } from 'react';
 
 // Props interface
 interface Props {
-  onSubmit: (e: React.FormEvent) => void;
+  onSubmit: (e: SyntheticEvent) => void;
   animations: {
     initial: { x: number; y: number };
     animate: { x: number; y: number };

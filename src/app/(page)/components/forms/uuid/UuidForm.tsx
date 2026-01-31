@@ -7,7 +7,7 @@ import { UuidFormProps } from '@/app/(page)/types/form.types';
 import GenerateButton from '../../shared/GenerateButton';
 import ResultSection from '../../shared/ResultSection';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { SyntheticEvent, useState } from 'react';
 
 /**
  * Component representing a uuid generation form
@@ -17,7 +17,7 @@ export default function UuidForm() {
   const [form, setForm] = useState<UuidFormProps>({ version: UUID_VERSIONS.V4 });
 
   // Handle form submission
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
 
     const { version } = form;
