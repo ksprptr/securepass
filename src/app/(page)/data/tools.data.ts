@@ -120,5 +120,8 @@ export const TOOLS: ToolMenuItem[] = TOOL_GROUPS.flatMap((group) => group.tools)
 /** Tool shown at the bare route — there is no empty landing state. */
 export const DEFAULT_TOOL = TOOL_TYPES.PASSWORD;
 
+/** Collapses a typing burst into a single run of the work an input triggers. */
+export const DEBOUNCE_MS = 150;
+
 /** How long a "Copied" confirmation stays visible. */
 export const COPIED_RESET_MS = 2000;

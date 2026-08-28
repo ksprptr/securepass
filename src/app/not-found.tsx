@@ -1,3 +1,5 @@
+import { primaryButtonClassName, primaryButtonHoverClassName } from '@/common/styles';
+
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
@@ -17,9 +19,7 @@ export default function NotFound() {
       <p className='max-w-md text-zinc-500 dark:text-zinc-400'>
         This page does not exist — but the toolkit is one click away.
       </p>
-      <Link
-        href='/'
-        className='rounded-xl bg-amber-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors duration-150 ease-out hover:bg-amber-700'>
+      <Link href='/' className={`${primaryButtonClassName} ${primaryButtonHoverClassName}`}>
         Back to the toolkit
       </Link>
     </div>

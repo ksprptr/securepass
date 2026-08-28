@@ -1,5 +1,6 @@
 'use client';
 
+import { primaryButtonClassName, primaryButtonHoverClassName } from '@/common/styles';
 import { downloadTextFile } from '@/common/utils/download.functions';
 import Icon from '@/components/common/Icon';
 import Logo from '@/components/common/Logo';
@@ -57,7 +58,7 @@ export default function LogoCard() {
         <button
           type='button'
           onClick={downloadSvg}
-          className='flex w-full items-center justify-center gap-2 rounded-xl bg-amber-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors duration-150 ease-out hover:bg-amber-700'>
+          className={`flex w-full items-center justify-center gap-2 ${primaryButtonClassName} ${primaryButtonHoverClassName}`}>
           <Icon icon='Download' className='h-4 w-4' />
           Download SVG
         </button>

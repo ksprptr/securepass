@@ -1,5 +1,7 @@
 'use client';
 
+import { primaryButtonClassName, primaryButtonHoverClassName } from '@/common/styles';
+
 interface Props {
   error: Error & { digest?: string };
   reset: () => void;
@@ -18,7 +20,7 @@ export default function ErrorBoundary({ reset }: Props) {
       <button
         type='button'
         onClick={reset}
-        className='rounded-xl bg-amber-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors duration-150 ease-out hover:bg-amber-700'>
+        className={`${primaryButtonClassName} ${primaryButtonHoverClassName}`}>
         Try again
       </button>
     </div>

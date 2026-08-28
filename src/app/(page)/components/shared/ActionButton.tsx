@@ -1,5 +1,6 @@
 'use client';
 
+import { primaryButtonHoverClassName } from '@/common/styles';
 import Icon, { IconName } from '@/components/common/Icon';
 
 import { ReactNode } from 'react';
@@ -13,7 +14,7 @@ interface Props {
 }
 
 const VARIANTS = {
-  primary: 'bg-amber-600 text-white shadow-sm shadow-amber-600/20 enabled:hover:bg-amber-700',
+  primary: `bg-amber-600 text-white shadow-sm shadow-amber-600/20 ${primaryButtonHoverClassName}`,
   secondary:
     'border border-zinc-300 bg-white text-zinc-700 enabled:hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 dark:enabled:hover:bg-zinc-700',
 };

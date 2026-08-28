@@ -1,7 +1,7 @@
 /**
  * Function to trigger a browser download for the given href
  **/
-export const triggerDownload = (href: string, fileName: string) => {
+const triggerDownload = (href: string, fileName: string) => {
   const link = document.createElement('a');
 
   link.href = href;

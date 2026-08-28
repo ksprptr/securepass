@@ -1,5 +1,6 @@
 'use client';
 
+import { primaryButtonClassName, primaryButtonHoverClassName } from '@/common/styles';
 import Icon from '@/components/common/Icon';
 
 import { useClipboard } from '../../hooks/clipboard.hooks';
@@ -27,7 +28,7 @@ export default function CopyButton({ value, label = 'value', variant = 'icon', d
         onClick={() => copy(value)}
         disabled={inactive}
         aria-label={`Copy ${label}`}
-        className='flex w-full items-center justify-center gap-2 rounded-xl bg-amber-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors duration-150 ease-out enabled:hover:bg-amber-700'>
+        className={`flex w-full items-center justify-center gap-2 ${primaryButtonClassName} ${primaryButtonHoverClassName}`}>
         <Icon icon={copied ? 'Check' : 'Copy'} className='h-4 w-4' />
         {copied ? 'Copied' : `Copy ${label}`}
       </button>

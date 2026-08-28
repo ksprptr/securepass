@@ -3,13 +3,13 @@ interface BcryptRequestBase {
   id: number;
 }
 
-export interface BcryptHashRequest extends BcryptRequestBase {
+interface BcryptHashRequest extends BcryptRequestBase {
   action: 'hash';
   text: string;
   rounds: number;
 }
 
-export interface BcryptVerifyRequest extends BcryptRequestBase {
+interface BcryptVerifyRequest extends BcryptRequestBase {
   action: 'verify';
   text: string;
   hash: string;

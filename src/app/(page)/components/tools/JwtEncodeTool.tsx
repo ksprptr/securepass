@@ -6,6 +6,7 @@ import {
   DEFAULT_JWT_SECRET,
   JWT_ALGORITHM_OPTIONS,
 } from '../../data/jwt.data';
+import { DEBOUNCE_MS } from '../../data/tools.data';
 import { JWT_ALGORITHMS, JwtAlgorithm } from '../../enums/tools.enums';
 import { getSecretBytes, signJwt } from '../../helpers/jwt.helpers';
 import Callout from '../shared/Callout';
@@ -79,10 +80,12 @@ export default function JwtEncodeTool() {
       }
     };
 
-    sign();
+    // Debounced for the same reason as the hash tool: one signature per pause, not per key.
+    const timeout = setTimeout(sign, DEBOUNCE_MS);
 
     return () => {
       cancelled = true;
+      clearTimeout(timeout);
     };
   }, [header, payload, secret, base64Secret, algorithm]);
 

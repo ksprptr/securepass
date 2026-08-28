@@ -1,4 +1,4 @@
-export interface LogoIconNode {
+interface LogoIconNode {
   d: string;
 }
 

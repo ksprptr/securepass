@@ -1,5 +1,6 @@
 'use client';
 
+import { primaryButtonClassName, primaryButtonHoverClassName } from '@/common/styles';
 import Icon from '@/components/common/Icon';
 
 import { AnimatePresence, motion } from 'motion/react';
@@ -68,7 +69,7 @@ export default function MenuHintModal({ open, onDismiss }: Props) {
               ref={confirm}
               type='button'
               onClick={onDismiss}
-              className='mt-6 w-full rounded-xl bg-amber-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors duration-150 ease-out hover:bg-amber-700'>
+              className={`mt-6 w-full ${primaryButtonClassName} ${primaryButtonHoverClassName}`}>
               Got it
             </button>
           </motion.div>

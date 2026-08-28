@@ -1,6 +1,7 @@
 'use client';
 
 import { HASH_ALGORITHM_OPTIONS } from '../../data/hash.data';
+import { DEBOUNCE_MS } from '../../data/tools.data';
 import { HashAlgorithm } from '../../enums/tools.enums';
 import { hashText } from '../../helpers/hash.helpers';
 import Callout from '../shared/Callout';
@@ -24,16 +25,21 @@ export default function HashTool() {
     // Drops the result of a stale run when the input changes mid-flight.
     let cancelled = false;
 
-    Promise.all(
-      HASH_ALGORITHM_OPTIONS.map(
-        async ({ value }) => [value, await hashText(value, text)] as const,
-      ),
-    ).then((entries) => {
-      if (!cancelled) setDigests(Object.fromEntries(entries));
-    });
+    // Debounced: MD5 runs in JS on this thread, so a large paste would otherwise hash on
+    // every keystroke.
+    const timeout = setTimeout(() => {
+      Promise.all(
+        HASH_ALGORITHM_OPTIONS.map(
+          async ({ value }) => [value, await hashText(value, text)] as const,
+        ),
+      ).then((entries) => {
+        if (!cancelled) setDigests(Object.fromEntries(entries));
+      });
+    }, DEBOUNCE_MS);
 
     return () => {
       cancelled = true;
+      clearTimeout(timeout);
     };
   }, [text]);
 

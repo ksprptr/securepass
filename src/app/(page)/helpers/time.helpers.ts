@@ -9,7 +9,7 @@ const RELATIVE_UNITS: [Intl.RelativeTimeFormatUnit, number][] = [
   ['second', 1],
 ];
 
-export const isValidDate = (date: Date): boolean => !Number.isNaN(date.getTime());
+const isValidDate = (date: Date): boolean => !Number.isNaN(date.getTime());
 
 /**
  * Function to format a date as `YYYY-MM-DD HH:mm:ss` in the given time zone

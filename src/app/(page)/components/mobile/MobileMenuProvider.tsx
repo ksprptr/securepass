@@ -14,7 +14,7 @@ interface Props extends PropsWithChildren {
 const HINT_STORAGE_KEY = 'dev-toolkit:menu-hint-seen';
 
 /** The breakpoint at which the sidebar appears, so the drawer and its hint are pointless. */
-export const SIDEBAR_QUERY = '(min-width: 64rem)';
+const SIDEBAR_QUERY = '(min-width: 64rem)';
 
 /**
  * Component that owns the mobile drawer, the swipe hint and the API to open either
