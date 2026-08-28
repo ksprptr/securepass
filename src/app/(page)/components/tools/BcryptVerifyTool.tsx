@@ -32,7 +32,8 @@ export default function BcryptVerifyTool() {
   };
 
   const verify = async () => {
-    if (!hash || !text || pending) return;
+    // Guarded by the same condition as the button, so a malformed hash never reaches bcrypt.
+    if (!rounds || !text || pending) return;
 
     setPending(true);
     reset();
@@ -88,7 +89,7 @@ export default function BcryptVerifyTool() {
           />
         </Field>
 
-        <ActionButton onClick={verify} icon='ShieldCheck' disabled={!hash || !text || pending}>
+        <ActionButton onClick={verify} icon='ShieldCheck' disabled={!rounds || !text || pending}>
           {pending ? 'Checking…' : 'Verify'}
         </ActionButton>
       </ToolCard>
