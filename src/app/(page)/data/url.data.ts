@@ -1,0 +1,30 @@
+/**
+ * Query parameters that only exist to track the click. Removing them never changes what the
+ * link opens — grouped so the UI can say who put the parameter there.
+ */
+export const TRACKING_PARAMS: Record<string, string> = {
+  utm_source: 'Google Analytics — campaign source',
+  utm_medium: 'Google Analytics — campaign medium',
+  utm_campaign: 'Google Analytics — campaign name',
+  utm_term: 'Google Analytics — paid keyword',
+  utm_content: 'Google Analytics — creative variant',
+  utm_id: 'Google Analytics — campaign id',
+  fbclid: 'Facebook click id',
+  gclid: 'Google Ads click id',
+  dclid: 'Google Display click id',
+  gbraid: 'Google Ads — web-to-app click id',
+  wbraid: 'Google Ads — app-to-web click id',
+  msclkid: 'Microsoft Ads click id',
+  twclid: 'X / Twitter click id',
+  ttclid: 'TikTok click id',
+  mc_eid: 'Mailchimp — encrypted recipient id',
+  mc_cid: 'Mailchimp — campaign id',
+  ref: 'Referrer tag',
+  ref_src: 'Referrer source tag',
+  si: 'Share id (YouTube, Spotify)',
+  igshid: 'Instagram share id',
+  vero_id: 'Vero recipient id',
+  _hsenc: 'HubSpot — encrypted contact',
+  _hsmi: 'HubSpot — email id',
+  yclid: 'Yandex click id',
+};

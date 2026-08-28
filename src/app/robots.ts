@@ -1,17 +1,17 @@
-import { getEnvUrl } from '@/configs/app.config';
+import { appConfig } from '@/configs/app.config';
 
-import { MetadataRoute } from 'next';
+import type { MetadataRoute } from 'next';
 
 /**
- * Function to generate a robots file
- */
+ * Robots — everything is public; only the API endpoints are uninteresting to crawlers
+ **/
 export default function Robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: '*',
       allow: '/',
+      disallow: ['/api/'],
     },
-    sitemap: `${getEnvUrl('app')}/sitemap.xml`,
-    host: getEnvUrl('app'),
+    sitemap: `${appConfig.urls.appUrl}/sitemap.xml`,
   };
 }

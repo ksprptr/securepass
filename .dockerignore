@@ -1,0 +1,29 @@
+# deps
+node_modules
+.pnpm-store
+
+# builds
+.next
+out
+build
+dist
+*.tsbuildinfo
+
+# env
+.env
+.env.*
+!.env.example
+
+# vcs / tooling
+.git
+.github
+.husky
+.claude
+
+# reference material (not part of the app)
+example
+
+# misc
+**/*.md
+**/.DS_Store
+coverage

@@ -1,27 +1,27 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import { RoughNotation } from 'react-rough-notation';
+
+export const metadata: Metadata = {
+  title: 'Page not found',
+  robots: { index: false, follow: true },
+};
 
 /**
- * Component representing a not found page
- */
-export default function Page() {
+ * Component representing the 404 page
+ **/
+export default function NotFound() {
   return (
-    <section className='flex min-h-screen flex-col items-center justify-center'>
-      <h1 className='text-center'>
-        <RoughNotation type='highlight' show={true} color='#2563eb' animationDuration={1200}>
-          <span className='w-max bg-linear-to-r from-zinc-50 to-zinc-300 bg-clip-text text-6xl font-bold text-transparent sm:text-7xl'>
-            Page Not Found
-          </span>
-        </RoughNotation>
-      </h1>
-
-      <div className='mt-16'>
-        <Link
-          href='/'
-          className='w-full rounded-md bg-blue-500 px-4 py-2 font-semibold text-zinc-50 transition-colors duration-300 ease-out hover:bg-blue-600'>
-          Go Home
-        </Link>
-      </div>
-    </section>
+    <div className='flex min-h-screen flex-col items-center justify-center gap-4 px-4 text-center'>
+      <p className='text-sm font-semibold tracking-widest text-amber-600 uppercase'>Error 404</p>
+      <h1 className='text-2xl font-bold text-zinc-900 dark:text-zinc-50'>Page not found</h1>
+      <p className='max-w-md text-zinc-500 dark:text-zinc-400'>
+        This page does not exist — but the toolkit is one click away.
+      </p>
+      <Link
+        href='/'
+        className='rounded-xl bg-amber-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors duration-150 ease-out hover:bg-amber-700'>
+        Back to the toolkit
+      </Link>
+    </div>
   );
 }

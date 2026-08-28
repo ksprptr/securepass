@@ -1,8 +1,8 @@
 @import 'tailwindcss';
 
-/**
- * Base styles
- */
+/* Drive the `dark:` variant from the `.dark` class that next-themes toggles on <html>. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
   * {
     @apply scroll-smooth;
@@ -11,16 +11,11 @@
   a,
   svg,
   img,
-  link,
-  input,
   label,
-  select,
-  button,
-  textarea {
+  button {
     @apply select-none;
   }
 
-  link,
   button {
     @apply hover:cursor-pointer disabled:opacity-50 disabled:hover:cursor-default;
   }
@@ -29,24 +24,197 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background: url(data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0Ljk1IDEwIj48ZGVmcz48c3R5bGU+LmNscy0ye2ZpbGw6IzQ0NDt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPmFycm93czwvdGl0bGU+PHBvbHlnb24gY2xhc3M9ImNscy0yIiBwb2ludHM9IjEuNDEgNC42NyAyLjQ4IDMuMTggMy41NCA0LjY3IDEuNDEgNC42NyIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtMiIgcG9pbnRzPSIzLjU0IDUuMzMgMi40OCA2LjgyIDEuNDEgNS4zMyAzLjU0IDUuMzMiLz48L3N2Zz4=)
-      no-repeat 93% 50%;
+    background: url(data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0Ljk1IDEwIj48ZGVmcz48c3R5bGU+LmNscy0ye2ZpbGw6Izg4ODt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPmFycm93czwvdGl0bGU+PHBvbHlnb24gY2xhc3M9ImNscy0yIiBwb2ludHM9IjEuNDEgNC42NyAyLjQ4IDMuMTggMy41NCA0LjY3IDEuNDEgNC42NyIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtMiIgcG9pbnRzPSIzLjU0IDUuMzMgMi40OCA2LjgyIDEuNDEgNS4zMyAzLjU0IDUuMzMiLz48L3N2Zz4=)
+      no-repeat 96% 50%;
+  }
+
+  /* The `dark:` variant can't target scrollbar pseudo-elements, so `.dark` overrides these. */
+  :root {
+    --scrollbar-track: var(--color-zinc-100);
+    --scrollbar-thumb: var(--color-zinc-300);
+    --scrollbar-thumb-hover: var(--color-zinc-400);
+    --slider-track: var(--color-zinc-200);
+  }
+
+  .dark {
+    --scrollbar-track: var(--color-zinc-900);
+    --scrollbar-thumb: var(--color-zinc-700);
+    --scrollbar-thumb-hover: var(--color-zinc-600);
+    --slider-track: var(--color-zinc-800);
+  }
+
+  /* Firefox + Chrome 121+ */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
   }
 
   ::-webkit-scrollbar {
-    @apply h-1 w-1 bg-blue-900;
+    @apply h-2.5 w-2.5;
+  }
+
+  ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-corner {
+    background: var(--scrollbar-track);
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply rounded-full bg-zinc-900;
+    @apply rounded-full;
+    background: var(--scrollbar-thumb);
+    /* Inset the thumb so it reads as a pill floating in the track. */
+    border: 2px solid var(--scrollbar-track);
+    background-clip: padding-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+    background-clip: padding-box;
   }
 }
 
-/**
- * Components
- */
-@layer components {
-  .liquid-glass-bg {
-    @apply bg-linear-to-br from-zinc-500/5 to-zinc-500/3 backdrop-blur-3xl;
+/* Wraps the app so the JavaScript-off screen can hide it with a single rule; generates no box. */
+.app-shell {
+  display: contents;
+}
+
+/* JavaScript-off screen — themed with `prefers-color-scheme`, as next-themes never adds `.dark`. */
+.noscript-screen {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.noscript-eyebrow {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-amber-600);
+}
+
+.noscript-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-zinc-900);
+}
+
+.noscript-text {
+  max-width: 28rem;
+  color: var(--color-zinc-500);
+}
+
+@media (prefers-color-scheme: dark) {
+  .noscript-title {
+    color: var(--color-zinc-50);
   }
+
+  .noscript-text {
+    color: var(--color-zinc-400);
+  }
+}
+
+/* Range slider — the native control ignores most styling, so both parts are drawn by hand.
+   `--slider-fill` is set per instance from the current value. */
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 1.5rem;
+  background: transparent;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-runnable-track {
+  height: 0.375rem;
+  border-radius: 9999px;
+  background: linear-gradient(
+    to right,
+    var(--color-amber-600) 0%,
+    var(--color-amber-600) var(--slider-fill, 0%),
+    var(--slider-track) var(--slider-fill, 0%),
+    var(--slider-track) 100%
+  );
+}
+
+.slider::-moz-range-track {
+  height: 0.375rem;
+  border-radius: 9999px;
+  background: var(--slider-track);
+}
+
+.slider::-moz-range-progress {
+  height: 0.375rem;
+  border-radius: 9999px;
+  background: var(--color-amber-600);
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 1.125rem;
+  width: 1.125rem;
+  /* Centres the thumb on the 6px track. */
+  margin-top: -0.375rem;
+  border-radius: 9999px;
+  background: #fff;
+  border: 2px solid var(--color-amber-600);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.2);
+  transition:
+    transform 0.15s ease-out,
+    box-shadow 0.15s ease-out;
+}
+
+.slider::-moz-range-thumb {
+  height: 1.125rem;
+  width: 1.125rem;
+  border-radius: 9999px;
+  background: #fff;
+  border: 2px solid var(--color-amber-600);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.2);
+  transition:
+    transform 0.15s ease-out,
+    box-shadow 0.15s ease-out;
+}
+
+.slider:hover::-webkit-slider-thumb,
+.slider:focus-visible::-webkit-slider-thumb {
+  transform: scale(1.12);
+  box-shadow: 0 0 0 4px --alpha(var(--color-amber-600) / 20%);
+}
+
+.slider:hover::-moz-range-thumb,
+.slider:focus-visible::-moz-range-thumb {
+  transform: scale(1.12);
+  box-shadow: 0 0 0 4px --alpha(var(--color-amber-600) / 20%);
+}
+
+.slider:focus-visible {
+  outline: none;
+}
+
+/* Decorative animated background blobs. */
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -40px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 30px) scale(0.95);
+  }
+}
+
+.animate-float {
+  animation: float 14s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float 20s ease-in-out infinite reverse;
 }
