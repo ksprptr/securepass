@@ -8,6 +8,11 @@ overrides:
   brace-expansion: '^5.0.9'
   sharp: '^0.35.3'
   '@babel/core': '^7.29.1'
+  # Dev-only lint tooling flagged by `pnpm audit`; each stays on its own major line.
+  flatted: '^3.4.4'
+  minimatch@3: '^3.1.5'
+  picomatch@2: '^2.3.2'
+  picomatch@4: '^4.0.7'
 
 allowBuilds:
   sharp: true
