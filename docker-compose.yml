@@ -1,0 +1,38 @@
+# Local and self-hosted runs only — production builds and runs the Dockerfile directly.
+# There is no backend and no database — every tool runs in the browser.
+#
+# Usage:
+#   docker compose up -d --build        # build + start on http://localhost:3000
+#   docker compose logs -f dev-toolkit  # stream logs
+#   docker compose down                 # stop
+#
+# Build args / env: root .env (see .env.example)
+
+services:
+  dev-toolkit:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        APP_URL: '${APP_URL:-http://localhost:3000}'
+    image: dev-toolkit
+    container_name: dev-toolkit
+    restart: unless-stopped
+    # The server only reads its own bundle, so deny writes, capabilities and privilege escalation.
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      APP_URL: '${APP_URL:-http://localhost:3000}'
+    ports:
+      # Bound to loopback for a same-host reverse proxy; drop the prefix to expose it directly.
+      - '127.0.0.1:${APP_PORT:-3000}:3000'
+    networks:
+      - dev_toolkit_net
+
+networks:
+  dev_toolkit_net:
+    driver: bridge
+    name: dev_toolkit_net

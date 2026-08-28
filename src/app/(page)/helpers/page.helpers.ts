@@ -1,14 +1,18 @@
-import { FORM_TYPES, FormType } from '../enums/form.enums';
+import { DEFAULT_TOOL, TOOLS } from '../data/tools.data';
+import { ToolType } from '../enums/tools.enums';
+import { ToolMenuItem } from '../types/tools.types';
 
 /**
- * Function to get a form type from search parameters
- */
-export const getFormType = (type: string | undefined): FormType => {
-  if (!type) return FORM_TYPES.PASS;
+ * Function to get a tool type from search parameters
+ **/
+export const getToolType = (tool: string | undefined): ToolType => {
+  if (!tool) return DEFAULT_TOOL;
 
-  const formType = Object.values(FORM_TYPES).find(
-    (form) => form.toLowerCase() === type.toLowerCase(),
-  );
-
-  return formType || FORM_TYPES.PASS;
+  return TOOLS.find((item) => item.type === tool.toLowerCase())?.type ?? DEFAULT_TOOL;
 };
+
+/**
+ * Function to get the menu entry of a tool
+ **/
+export const getTool = (type: ToolType): ToolMenuItem =>
+  TOOLS.find((item) => item.type === type) ?? TOOLS[0];

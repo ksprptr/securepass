@@ -2,7 +2,7 @@ import { ExtendedProps } from '@/common/types/global.types';
 
 /**
  * Component representing a GitHub icon
- */
+ **/
 export default function GitHubIcon({ ...props }: ExtendedProps) {
   return (
     <svg viewBox='0 0 20 20' {...props}>

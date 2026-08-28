@@ -1,30 +1,28 @@
-import tsPlugin from '@typescript-eslint/eslint-plugin';
-import tsParser from '@typescript-eslint/parser';
 import { defineConfig } from 'eslint/config';
 import nextVitals from 'eslint-config-next/core-web-vitals';
 import prettier from 'eslint-plugin-prettier';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import unusedImports from 'eslint-plugin-unused-imports';
 
+// `eslint-config-next` already registers the react, import and @typescript-eslint plugins.
 export default defineConfig([
   ...nextVitals,
   {
-    languageOptions: {
-      parser: tsParser,
-    },
+    // Pin the version: `eslint-config-next` sets `detect`, whose lookup crashes under ESLint 10.
+    settings: { react: { version: '19' } },
+  },
+  {
+    files: ['**/*.{ts,tsx}'],
     plugins: {
       prettier,
       'unused-imports': unusedImports,
       'simple-import-sort': simpleImportSort,
-      '@typescript-eslint': tsPlugin,
     },
     rules: {
-      semi: 'error',
+      'prettier/prettier': 'error',
       'react/no-unescaped-entities': 'off',
-      'react/jsx-uses-react': 'off',
-      'react/react-in-jsx-scope': 'off',
-      '@typescript-eslint/no-shadow': ['error'],
-      '@typescript-eslint/no-use-before-define': ['error'],
+      '@typescript-eslint/no-shadow': 'error',
+      '@typescript-eslint/no-use-before-define': 'error',
       'no-use-before-define': 'off',
       'no-await-in-loop': 'warn',
       'no-eval': 'error',
@@ -32,25 +30,19 @@ export default defineConfig([
       'prefer-promise-reject-errors': 'warn',
       'spaced-comment': 'error',
       'no-duplicate-imports': 'error',
-      'no-explicit-any': 'off',
-      '@typescript-eslint/no-explicit-any': 'off',
-      '@typescript-eslint/no-unused-vars': 'off',
+      // Superseded by `unused-imports/no-unused-vars`, which can also drop the import itself.
       'no-unused-vars': 'off',
-      'react-hooks/exhaustive-deps': 'off',
+      '@typescript-eslint/no-unused-vars': 'off',
       'unused-imports/no-unused-imports': 'error',
       'unused-imports/no-unused-vars': [
         'error',
-        {
-          vars: 'all',
-          varsIgnorePattern: '^_',
-          args: 'after-used',
-          argsIgnorePattern: '^_',
-        },
+        { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_' },
       ],
       'simple-import-sort/imports': [
         'error',
         {
-          groups: [['^\\u0000', '^@?w'], ['^@/'], ['^.'], ['^.+.(css|scss)$']],
+          // Side effects, then the `@/…` app imports, then everything else, stylesheets last.
+          groups: [['^\\u0000'], ['^@/'], ['^'], ['^.+\\.(css|scss)$']],
         },
       ],
       'simple-import-sort/exports': 'error',

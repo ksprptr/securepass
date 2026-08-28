@@ -1,55 +1,53 @@
-import FormSelector from './components/FormSelector';
-import { FORM_TYPES } from './enums/form.enums';
-import { getFormType } from './helpers/page.helpers';
-import Link from 'next/link';
-import { RoughNotation } from 'react-rough-notation';
+import { buildAppSchema } from '@/common/utils/schema.functions';
+import JsonLd from '@/components/common/JsonLd';
+import { appConfig } from '@/configs/app.config';
 
-// Props interface
+import Hero from './components/Hero';
+import MobileMenuProvider from './components/mobile/MobileMenuProvider';
+import PrivacyNote from './components/PrivacyNote';
+import ToolHeading from './components/ToolHeading';
+import ToolSelector from './components/ToolSelector';
+import ToolSidebar from './components/ToolSidebar';
+import { getTool, getToolType } from './helpers/page.helpers';
+import type { Metadata } from 'next';
+
 interface Props {
-  searchParams: Promise<{ type: string }>;
+  searchParams: Promise<{ tool?: string }>;
 }
+
+// The tool selector lives in `?tool=`, so every variant canonicalizes to the bare route.
+export const metadata: Metadata = {
+  alternates: { canonical: '/' },
+};
 
 /**
  * Component representing a home page
- */
+ **/
 export default async function Page({ searchParams }: Props) {
-  const { type } = await searchParams;
-  const currentType = getFormType(type);
+  const { tool } = await searchParams;
+  const currentType = getToolType(tool);
+  const currentTool = getTool(currentType);
 
   return (
-    <section className='py-32 text-center'>
-      <h1>
-        <RoughNotation type='highlight' show={true} color='#2563eb' animationDuration={1200}>
-          <span className='w-max bg-linear-to-br from-zinc-50 to-zinc-300 bg-clip-text text-6xl font-bold text-transparent sm:text-7xl md:text-8xl'>
-            Vaultify
-          </span>
-        </RoughNotation>
-      </h1>
+    <MobileMenuProvider currentType={currentType}>
+      <ToolSidebar currentType={currentType} />
 
-      {/* Menu */}
-      <ul className='liquid-glass-bg mx-auto mt-8 grid w-max grid-cols-4 items-center justify-center gap-2 rounded-full p-1 text-sm sm:text-base'>
-        {Object.keys(FORM_TYPES).map((key) => {
-          const active = currentType === key;
+      {/* Clears the fixed sidebar; below `lg` there is none, so the content spans the viewport. */}
+      <div className='lg:pl-64'>
+        {/* Full height, so the note keeps to the floor even when a tool is short. */}
+        <section className='mx-auto flex min-h-screen max-w-5xl flex-col gap-10 px-4 py-16 sm:py-24'>
+          <JsonLd schema={buildAppSchema(appConfig.urls.appUrl)} />
 
-          return (
-            <Link
-              key={key}
-              href={`/?type=${key.toLowerCase()}`}
-              className={`rounded-full px-4 py-1.5 tracking-wider capitalize transition-all duration-300 ease-out ${active ? 'bg-linear-to-br from-blue-500/30 to-blue-600/20 font-medium backdrop-blur-3xl' : 'text-zinc-400 hover:text-zinc-200'}`}>
-              {key}
-            </Link>
-          );
-        })}
-      </ul>
+          <Hero />
 
-      {/* Light bulb */}
-      <div className='mx-auto mt-8'>
-        <div className='mx-auto h-1 w-6 rounded-full bg-zinc-50' />
-        <div className='mx-auto mt-3 h-20 w-20 rotate-45 bg-linear-to-br from-zinc-50 to-transparent to-50%' />
+          <div className='flex flex-col gap-6'>
+            <ToolHeading tool={currentTool} />
+            <ToolSelector key={currentTool.type} type={currentTool.type} />
+          </div>
+
+          <PrivacyNote />
+        </section>
       </div>
-
-      {/* Forms */}
-      <FormSelector formType={currentType} />
-    </section>
+    </MobileMenuProvider>
   );
 }

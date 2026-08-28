@@ -1,31 +1,48 @@
-import { MetadataConfig } from '@/common/types/metadata.types';
+import { AppConfig, MetadataConfig } from '@/common/types/metadata.types';
 
-/**
- * Web metadata configuration
- */
+/** Web metadata — the single source for the layout metadata, manifest, robots and the OG image. */
 export const metadataConfig: MetadataConfig = {
-  title: 'Vaultify ~ Next-gen toolkit for secure identifiers',
-  shortTitle: 'Vaultify',
+  title: 'Dev Toolkit',
+  shortTitle: 'Dev Toolkit',
+  tagline: 'Password, hash, JWT and URL utilities',
   description:
-    'Generate secure UUIDs, passwords, and more with Vaultify. Your go-to tool for safe and unique identifiers. Free and easy to use!',
-  keywords: ['vaultify', 'password generator', 'uuid generator', 'secure identifiers', 'free tool'],
+    'Password, hash, JWT and URL utilities that run entirely in your browser. Generate passwords, secrets and UUIDs, hash and verify with bcrypt, encode and decode JWTs, clean tracking parameters out of URLs. Free, no backend, no tracking.',
+  keywords: [
+    'dev toolkit',
+    'developer tools',
+    'password generator',
+    'secret generator',
+    'api key generator',
+    'uuid generator',
+    'bcrypt generator',
+    'bcrypt verify',
+    'md5 sha1 sha256 sha512',
+    'hash generator',
+    'jwt encoder',
+    'jwt decoder',
+    'url cleaner',
+    'remove utm parameters',
+    'url encoder',
+    'slug generator',
+    'unix timestamp converter',
+    'no tracking',
+    'open source',
+  ],
+  author: {
+    name: 'Petr Kašpar',
+    url: 'https://ksprptr.dev',
+  },
+  repositoryUrl: 'https://github.com/ksprptr/dev-toolkit',
   colors: {
-    background: '#09090b',
-    theme: '#09090b',
+    background: '#fafafa',
+    theme: '#e17100',
   },
 };
 
-/**
- * Function to get the environment url based on the environment
- */
-export const getEnvUrl = (type: 'app'): string => {
-  switch (type) {
-    case 'app': {
-      const url = process.env.NEXT_PUBLIC_APP_URL;
-
-      if (!url) throw new Error('NEXT_PUBLIC_APP_URL is not defined in environment variables');
-
-      return url;
-    }
-  }
+/** Application configuration — read on the server only, holds no secrets. */
+export const appConfig: AppConfig = {
+  urls: {
+    // Security: the only origin source — `x-forwarded-host` is client-supplied and not trusted.
+    appUrl: (process.env.APP_URL ?? 'http://localhost:3000').replace(/\/$/, ''),
+  },
 };
