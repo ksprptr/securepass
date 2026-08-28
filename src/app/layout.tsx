@@ -34,8 +34,7 @@ export const metadata: Metadata = {
   creator: metadataConfig.author.name,
   publisher: metadataConfig.author.name,
   category: 'technology',
-  // `capable: false` keeps the `mobile-web-app-capable` tag out: a home-screen shortcut should
-  // open in the browser, like the manifest's `display: 'browser'` asks for.
+  // `capable: false` drops `mobile-web-app-capable`, so a shortcut opens in the browser.
   appleWebApp: { capable: false, title: metadataConfig.shortTitle },
   robots: {
     index: true,

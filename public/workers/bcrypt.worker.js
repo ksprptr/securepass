@@ -1,15 +1,6 @@
-/**
- * Bcrypt off the main thread. Plain JS on purpose — the bundler never touches this file.
- *
- * Two reasons it lives here instead of in `src/`:
- *  - Turbopack compiles `new Worker(new URL('./x.ts', import.meta.url))` into a chunk that needs
- *    its runtime to bootstrap, so the worker loaded without error and then ignored every message.
- *  - The synchronous bcrypt API is the fast one: the async variant yields between chunks through
- *    `setTimeout`, which on the main thread costs the timer clamp (a cost-12 hash measured 1.1 s
- *    that way against ~200 ms of real work). A worker may block, so it runs at full speed.
- *
- * Message contract: `src/app/(page)/types/bcrypt.types.ts`.
- */
+// Bcrypt off the main thread. Plain JS: a bundled worker needs a runtime it never gets here.
+// Sync API on purpose — the async one yields via `setTimeout` and pays the timer clamp.
+// Message contract: `src/app/(page)/types/bcrypt.types.ts`.
 
 importScripts('/vendor/bcrypt.umd.js');
 

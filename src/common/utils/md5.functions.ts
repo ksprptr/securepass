@@ -1,7 +1,4 @@
-/**
- * MD5 (RFC 1321), implemented here because Web Crypto deliberately omits it.
- * Kept for legacy checksums only — MD5 is broken for anything security related.
- */
+// MD5 (RFC 1321), hand-rolled because Web Crypto omits it; legacy checksums only.
 
 // prettier-ignore
 const SHIFTS = [

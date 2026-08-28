@@ -25,8 +25,7 @@ export default function HashTool() {
     // Drops the result of a stale run when the input changes mid-flight.
     let cancelled = false;
 
-    // Debounced: MD5 runs in JS on this thread, so a large paste would otherwise hash on
-    // every keystroke.
+    // Debounced: MD5 runs in JS on this thread, so a large paste must not hash per keystroke.
     const timeout = setTimeout(() => {
       Promise.all(
         HASH_ALGORITHM_OPTIONS.map(

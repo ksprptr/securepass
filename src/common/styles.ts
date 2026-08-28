@@ -1,7 +1,4 @@
-/**
- * Class names shared by unrelated modules. Styles used by a single component stay with it —
- * `inputClassName` lives in `Field`, for instance, because only its own fields need it.
- */
+// Class names shared by unrelated modules; ones used by a single component stay with it.
 
 /** The filled brand button: page-level actions, tool actions and the copy button all share it. */
 export const primaryButtonClassName =

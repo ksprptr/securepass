@@ -1,10 +1,7 @@
 import { HASH_ALGORITHMS, HashAlgorithm } from '../enums/tools.enums';
 import { SelectOption } from '../types/tools.types';
 
-/**
- * Bcrypt cost factors. Each step doubles the work, so the hint is what really guides the pick.
- * Timings are the rough cost of one hash on a current laptop.
- */
+/** Bcrypt cost factors; each step doubles the work, so the hint is what guides the pick. */
 export const BCRYPT_ROUNDS = {
   min: 4,
   max: 16,

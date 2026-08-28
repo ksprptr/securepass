@@ -22,10 +22,7 @@ const BURST_MS = 1400;
 
 const TRANSITION = { type: 'spring', stiffness: 320, damping: 24 } as const;
 
-/**
- * How far the whole egg — mascot and shout alike — hangs off the top edge.
- * `rest` leaves only his head showing; `hover` drops him to about half his height.
- */
+/** How far the whole egg — mascot and shout alike — hangs off the top edge. */
 const OFFSET_VARIANTS = {
   rest: { y: '-74%' },
   hover: { y: '-48%' },

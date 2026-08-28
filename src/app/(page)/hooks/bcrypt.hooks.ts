@@ -47,16 +47,12 @@ export function useBcrypt() {
   const nextId = useRef(0);
 
   useEffect(() => {
-    // Spun up once and kept warm: loading the module costs more than a cost-10 hash takes.
-    // Served straight from `public/`, not bundled: Turbopack compiles a `new URL(…, import.meta
-    // .url)` worker into a chunk that needs its runtime, which never boots inside the worker.
+    // Served from `public/`, not bundled: a Turbopack-built worker needs a runtime it never gets.
     const instance = new Worker(WORKER_URL);
 
     let timeout: ReturnType<typeof setTimeout> | undefined;
 
-    // Resolves to null on failure rather than rejecting: React's development double-mount
-    // terminates the first worker before it can answer, and a rejection nobody awaits reaches
-    // the user as an unhandled promise rejection in the dev overlay.
+    // Resolves to null instead of rejecting: React's double-mount would leave an unhandled one.
     ready.current = new Promise<Worker | null>((resolve) => {
       timeout = setTimeout(() => resolve(null), STARTUP_TIMEOUT_MS);
 

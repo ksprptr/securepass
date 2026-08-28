@@ -45,8 +45,7 @@ export default function OutputField({
       <div className={boxClassName}>
         {value ? (
           animate ? (
-            // Keyed, but deliberately without AnimatePresence: an exit animation would hold the
-            // previous value on screen, and a value that changes mid-exit could strand it there.
+            // No AnimatePresence: an exit animation would strand the previous value on screen.
             <motion.div
               key={value}
               initial={{ opacity: 0, y: 4 }}

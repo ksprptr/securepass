@@ -1,7 +1,4 @@
-/**
- * Query parameters that only exist to track the click. Removing them never changes what the
- * link opens — grouped so the UI can say who put the parameter there.
- */
+/** Parameters that only track the click; the value names who set them. */
 export const TRACKING_PARAMS: Record<string, string> = {
   utm_source: 'Google Analytics — campaign source',
   utm_medium: 'Google Analytics — campaign medium',

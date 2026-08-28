@@ -39,10 +39,7 @@ export const MEMORABLE_WORDS = {
   default: 5,
 };
 
-/**
- * Word list for memorable passwords — short, unambiguous, easy to read out loud.
- * Exactly 256 entries, so every word carries a whole byte of entropy (8 bits).
- */
+/** Memorable-password words: exactly 256 entries, so one word carries a whole byte. */
 export const PASSWORD_WORDS = [
   'able acid acorn actor admit adopt agent album alert alien',
   'alpha amber angle ankle apple apron arbor arena armor arrow',

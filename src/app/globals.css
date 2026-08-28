@@ -118,8 +118,7 @@
   }
 }
 
-/* Range slider — the native control ignores most styling, so both parts are drawn by hand.
-   `--slider-fill` is set per instance from the current value. */
+/* Range slider drawn by hand; `--slider-fill` is set per instance from the current value. */
 .slider {
   -webkit-appearance: none;
   appearance: none;

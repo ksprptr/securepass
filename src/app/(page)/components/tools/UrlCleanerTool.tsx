@@ -36,8 +36,7 @@ export default function UrlCleanerTool() {
     };
   }, [input]);
 
-  // Ticked boxes belong to one query string: a new URL falls back to its own tracking defaults
-  // instead of inheriting indexes that now point at different parameters.
+  // Ticks belong to one query string; a new URL falls back to its own tracking defaults.
   const removed =
     choice?.search === search
       ? choice.removed

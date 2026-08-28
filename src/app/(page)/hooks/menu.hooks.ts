@@ -27,8 +27,7 @@ export function useMobileMenu(): MobileMenu {
 /**
  * Hook that reports whether a media query matches
  **/
-// An external store rather than state in an effect; the server snapshot is false, since a
-// viewport width is something only the browser knows.
+// An external store, not state in an effect: only the browser knows the viewport width.
 export function useMediaQuery(query: string): boolean {
   const subscribe = useCallback(
     (onChange: () => void) => {

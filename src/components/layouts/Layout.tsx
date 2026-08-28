@@ -3,8 +3,7 @@ import { PropsWithChildren } from 'react';
 /**
  * Component representing a layout
  **/
-// Deliberately not centered: the toolkit page owns its own container, since the dashboard
-// sidebar is pinned to the viewport rather than to a centred column.
+// Not centered: the sidebar is pinned to the viewport, so the page owns its own container.
 export default function Layout({ children }: PropsWithChildren) {
   return <main className='min-h-screen'>{children}</main>;
 }
